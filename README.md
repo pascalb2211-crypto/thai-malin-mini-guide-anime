@@ -1,0 +1,1 @@
+Mini-guide Thaï Malin 20 pages. Les 20 visuels générés sont intégrés comme images. Les cases à cocher, la progression, les boutons et la navigation sont fonctionnels en HTML/JavaScript et mémorisés localement.

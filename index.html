@@ -10,7 +10,7 @@ button{cursor:pointer;border:0}.nav,.tool{background:#ffffff20;color:#fff;border
 .layout{display:grid;grid-template-columns:145px 1fr;max-width:1500px;margin:auto}.side{background:#fff;padding:8px;max-height:calc(100vh - 58px);overflow:auto}
 .thumb{width:100%;background:#fff;border:2px solid transparent;border-radius:9px;padding:3px;margin-bottom:7px;text-align:left;font-weight:800}.thumb.active{border-color:#1676d2}.thumb img{width:100%;display:block;border-radius:6px}.thumb small{font-size:10px}
 main{padding:12px}.viewer{position:relative;max-width:1400px;margin:auto;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 12px 35px #17323e22}.viewer img{width:100%;display:block}
-.hotspot{position:absolute;border:0;background:transparent;border-radius:10px}.hotspot:hover{background:#1676d220;outline:2px solid #fff}
+.hotspot{position:absolute;display:block;border:0;background:transparent;border-radius:10px;cursor:pointer}.hotspot:focus-visible{outline:3px solid #ff4778}.hotspot:hover{background:#1676d220;outline:2px solid #fff}
 .bottom{max-width:1400px;margin:10px auto;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}.bottom button{padding:10px 14px;border-radius:10px;font-weight:900}
 .primary{background:#1676d2;color:#fff}.pink{background:#ed4775;color:#fff}.green{background:#1fa66b;color:#fff}.orange{background:#f07b22;color:#fff}.light{background:#fff;color:#17323e}
 .panel{max-width:1400px;margin:10px auto;background:#fff;border:1px solid #d8e5e2;border-radius:16px;padding:14px;display:none}.panel.show{display:block}
@@ -56,12 +56,41 @@ main{padding:12px}.viewer{position:relative;max-width:1400px;margin:auto;backgro
 <script>
 const titles=["Bienvenue en Thaïlande", "Avant de partir", "Documents & TDAC", "Visa & Entrée en Thaïlande", "Vols & Réservations", "Assurance voyage", "eSIM & Internet", "Mon argent en Thaïlande", "Ma valise", "Arrivée en Thaïlande", "Se déplacer en Thaïlande", "Se loger", "Manger en Thaïlande", "Visiter les incontournables", "Itinéraires recommandés", "Conseils pratiques au quotidien", "Culture & Traditions", "Shopping & Souvenirs", "Idées d’excursions et activités", "Numéros utiles & SOS"];
 let page=1;
+const HOTSPOTS={
+ // x,y,w,h en % de l'image (restent alignés à toutes les tailles). Cible : href (lien externe) | page (n° de page) | panel (id du panneau)
+ 1:[
+  {"x": 28.12, "y": 63.17, "w": 13.99, "h": 24.11, "label": "Mon voyage", "page": 2},
+  {"x": 42.71, "y": 63.17, "w": 13.62, "h": 24.11, "label": "Mes documents", "page": 3},
+  {"x": 56.99, "y": 63.17, "w": 13.69, "h": 24.11, "label": "Sur place", "page": 10},
+  {"x": 71.28, "y": 63.17, "w": 13.54, "h": 24.11, "label": "Découvrir", "page": 14},
+  {"x": 85.42, "y": 63.17, "w": 13.54, "h": 24.11, "label": "Mon livre & mon film", "panel": "book"},
+  {"x": 11.16, "y": 90.96, "w": 14.14, "h": 7.25, "label": "Trip.com", "href": "https://www.trip.com/?Allianceid=9852508&SID=327644129&trip_sub1=&trip_sub3=D19106369"},
+  {"x": 25.82, "y": 90.96, "w": 14.36, "h": 7.25, "label": "Agoda", "href": "https://www.agoda.com/?cid=1972177"},
+  {"x": 40.85, "y": 90.96, "w": 14.06, "h": 7.25, "label": "GetYourGuide", "href": "https://gyg.me/qSQwVEug"},
+  {"x": 55.95, "y": 90.96, "w": 13.99, "h": 7.25, "label": "12Go", "href": "https://12go.asia/?z=16569415"},
+  {"x": 70.68, "y": 90.96, "w": 13.99, "h": 7.25, "label": "SafetyWing", "href": "https://safetywing.com/nomad-insurance?referenceID=26576610&campaign=thai-malin&utm_campaign=thai-malin&utm_source=26576610&utm_medium=Ambassador"},
+  {"x": 85.71, "y": 90.96, "w": 13.84, "h": 7.25, "label": "Airalo", "href": "https://airalo.pxf.io/PzWeQQ"}
+ ]
+};
+function drawHotspots(){
+ const v=document.getElementById('viewer');v.querySelectorAll('.hotspot').forEach(e=>e.remove());
+ (HOTSPOTS[page]||[]).forEach(h=>{
+  const e=document.createElement(h.href?'a':'button');e.className='hotspot';
+  e.style.cssText='left:'+h.x+'%;top:'+h.y+'%;width:'+h.w+'%;height:'+h.h+'%';
+  e.setAttribute('aria-label',h.label);e.title=h.label;
+  if(h.href){e.href=h.href;e.target='_blank';e.rel='noopener sponsored';}
+  else if(h.page){e.onclick=()=>go(h.page);}
+  else if(h.panel){e.onclick=()=>show(h.panel);}
+  v.appendChild(e);
+ });
+}
 const state=JSON.parse(localStorage.getItem('tm-state')||'{}');
 function go(n){page=Math.max(1,Math.min(20,n));render();window.scrollTo({top:0,behavior:'smooth'});}
 function render(){
  document.getElementById('counter').textContent=page+' / 20';
  document.getElementById('pageImage').src='assets/page-'+String(page).padStart(2,'0')+'.png';
  document.getElementById('pageImage').alt=titles[page-1];
+ drawHotspots();
  const side=document.getElementById('side');side.innerHTML='';
  titles.forEach((t,i)=>{let b=document.createElement('button');b.className='thumb '+(i+1===page?'active':'');b.onclick=()=>go(i+1);b.innerHTML='<img src="assets/page-'+String(i+1).padStart(2,'0')+'.png"><small>'+(i+1)+' — '+t+'</small>';side.appendChild(b);});
 }

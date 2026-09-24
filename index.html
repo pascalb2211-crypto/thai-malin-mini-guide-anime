@@ -1,169 +1,74 @@
 <!doctype html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#10264f">
-<title>Thaï Malin — Mini-guide interactif</title>
+<html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thaï Malin — Mini-guide Réunionnais</title>
 <style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:#edf5f4;color:#18323d;font-family:Arial,Helvetica,sans-serif}
-header{position:sticky;top:0;z-index:50;background:#10264ff5;color:#fff;backdrop-filter:blur(12px)}
-.bar{max-width:1100px;margin:auto;padding:8px 12px;display:flex;align-items:center;gap:10px}
-.logo{font-size:17px;font-weight:1000;white-space:nowrap}.logo span{color:#ff4778}
-.nav{display:flex;align-items:center;gap:6px;margin-left:auto}.nav button{border:0;background:#ffffff20;color:#fff;border-radius:999px;padding:8px 11px;font-weight:900;cursor:pointer}
-.counter{min-width:58px;text-align:center;font-weight:1000}
-main{max-width:1100px;margin:auto;padding:12px 10px 60px}
-.viewer{position:relative;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 12px 35px #18323d25}
-.viewer img{display:block;width:100%;height:auto}
-.hotspot{position:absolute;border:2px solid transparent;background:transparent;border-radius:10px;cursor:pointer}
-.hotspot:hover,.hotspot:focus{background:#ffffff28;border-color:#fff;box-shadow:0 0 0 2px #1676d2}
-.checkspot{position:absolute;width:28px;height:28px;border:2px solid #fff;background:#ffffffb8;border-radius:7px;cursor:pointer;z-index:3;box-shadow:0 2px 8px #0005}
-.checkspot.checked{background:#18a66e;color:#fff}
-.checkspot.checked:after{content:"✓";font-size:20px;font-weight:1000;position:absolute;left:4px;top:0}
-.panel{margin-top:12px;background:#fff;border:1px solid #d7e5e3;border-radius:18px;padding:14px;box-shadow:0 8px 24px #18323d12}
-.panel h2{margin:0 0 7px;font-size:21px}.panel p{line-height:1.4;margin:5px 0 12px}
-.hidden{display:none}.actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:0;text-decoration:none;border-radius:999px;padding:11px 15px;background:#1676d2;color:#fff;font-weight:900;cursor:pointer}.btn.pink{background:#ed4775}.btn.green{background:#20a56c}.btn.light{background:#edf4f3;color:#24444e}
-.modal{position:fixed;inset:0;background:#10264fb8;z-index:100;display:none;padding:30px 14px;overflow:auto}.modal.open{display:block}
-.modalbox{max-width:900px;margin:auto;background:#fff;border-radius:22px;padding:15px}.modalhead{display:flex;justify-content:space-between;align-items:center}.modalhead h2{margin:0}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:12px}.thumb{border:2px solid #dce8e6;border-radius:12px;overflow:hidden;background:#fff;cursor:pointer}.thumb.active{border-color:#ed4775}.thumb img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover}.thumb b{display:block;padding:6px;font-size:11px}
-.favgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.favitem{padding:10px;border-radius:12px;background:#fff0f4;border:1px solid #f0b4c5;font-weight:800}
-.notice{background:#fff4b7;border:1px solid #ead06d;border-radius:14px;padding:11px;font-weight:800;margin-top:10px}
-@media(max-width:700px){.grid{grid-template-columns:repeat(2,1fr)}.logo{font-size:15px}.nav button{padding:7px 9px}.bar{padding:7px 8px}}
-@media print{
- header,.panel,.modal,.no-print{display:none!important}body{background:#fff}.viewer{box-shadow:none;border-radius:0;page-break-after:always}.viewer img{width:100%}
-}
-</style>
-</head>
-<body>
-<header>
-<div class="bar">
-  <div class="logo">🌺 THAÏ <span>MALIN</span></div>
-  <div class="nav">
-    <button onclick="prev()">←</button>
-    <div class="counter" id="counter">1 / 20</div>
-    <button onclick="next()">→</button>
-    <button onclick="openSummary()">☷ Sommaire</button>
-    <button onclick="window.print()">⬇ PDF</button>
-    <button onclick="toggleFavorite()">♡ Favori</button>
-    <button onclick="toggleFullscreen()">⛶</button>
-  </div>
+*{box-sizing:border-box}body{margin:0;background:#edf4f3;color:#17323e;font-family:Arial,sans-serif}
+header{position:sticky;top:0;z-index:20;background:#062554;color:#fff}.top{height:58px;display:flex;align-items:center;gap:10px;padding:7px 14px}
+.brand{font-size:20px;font-weight:900}.brand span{color:#ff4778}.title{flex:1;font-weight:800}.counter{font-weight:900}
+button{cursor:pointer;border:0}.nav,.tool{background:#ffffff20;color:#fff;border-radius:10px;padding:9px 12px;font-weight:900}
+.layout{display:grid;grid-template-columns:145px 1fr;max-width:1500px;margin:auto}.side{background:#fff;padding:8px;max-height:calc(100vh - 58px);overflow:auto}
+.thumb{width:100%;background:#fff;border:2px solid transparent;border-radius:9px;padding:3px;margin-bottom:7px;text-align:left;font-weight:800}.thumb.active{border-color:#1676d2}.thumb img{width:100%;display:block;border-radius:6px}.thumb small{font-size:10px}
+main{padding:12px}.viewer{position:relative;max-width:1400px;margin:auto;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 12px 35px #17323e22}.viewer img{width:100%;display:block}
+.hotspot{position:absolute;border:0;background:transparent;border-radius:10px}.hotspot:hover{background:#1676d220;outline:2px solid #fff}
+.bottom{max-width:1400px;margin:10px auto;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}.bottom button{padding:10px 14px;border-radius:10px;font-weight:900}
+.primary{background:#1676d2;color:#fff}.pink{background:#ed4775;color:#fff}.green{background:#1fa66b;color:#fff}.orange{background:#f07b22;color:#fff}.light{background:#fff;color:#17323e}
+.panel{max-width:1400px;margin:10px auto;background:#fff;border:1px solid #d8e5e2;border-radius:16px;padding:14px;display:none}.panel.show{display:block}
+.links{display:flex;flex-wrap:wrap;gap:8px}.btn{padding:10px 13px;border-radius:10px;color:#fff;text-decoration:none;font-weight:900}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}.check{padding:9px;border:1px solid #dce6e4;border-radius:10px;font-weight:800;background:#f7faf9}.check input{width:19px;height:19px;vertical-align:middle;margin-right:7px;accent-color:#1fa66b}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.side{display:flex;overflow-x:auto;max-height:none}.thumb{min-width:100px}.title{display:none}.checks{grid-template-columns:1fr}}
+</style></head><body>
+<header><div class="top">
+<div class="brand">🌺 THAÏ <span>MALIN</span></div><div class="title">Mini-guide Réunionnais</div>
+<button class="nav" onclick="go(page-1)">←</button><div class="counter" id="counter">1 / 20</div><button class="nav" onclick="go(page+1)">→</button>
+<button class="tool" onclick="show('summary')">☷ Sommaire</button><button class="tool" onclick="window.print()">↓ PDF</button>
+<button class="tool" onclick="show('favorites')">♡ Favoris</button><button class="tool" onclick="document.documentElement.requestFullscreen?.()">⛶</button>
+</div></header>
+<div class="layout"><aside class="side" id="side"></aside><main>
+<div class="viewer" id="viewer"><img id="pageImage" alt=""></div>
+<div class="bottom">
+<button class="primary" onclick="show('links')">🔗 Liens utiles</button>
+<button class="pink" onclick="show('checklist')">☑️ Ma checklist</button>
+<button class="green" onclick="show('book')">📖 Mon livre</button>
+<button class="orange" onclick="show('film')">🎬 Mon film IA</button>
+<button class="light" onclick="toggleFavorite()">♡ Ajouter aux favoris</button>
 </div>
-</header>
-
-<main>
-<div class="viewer" id="viewer">
-  <img id="pageImage" src="assets/page-01.jpg" alt="">
-  <div id="hotspots"></div>
-  <div id="checkspots"></div>
-</div>
-
-<section id="info" class="panel">
-  <h2 id="pageTitle">Bienvenue en Thaïlande</h2>
-  <p id="creole"></p>
-  <div class="actions" id="links"></div>
-  <div class="notice">💡 Astuce : les zones directement sur l’image sont cliquables. Les cases ☑️ peuvent être mémorisées sur ton appareil.</div>
-</section>
-
-<section id="favoritesPanel" class="panel hidden">
-  <h2>❤️ Mes favoris</h2>
-  <div id="favorites" class="favgrid"></div>
-</section>
-
-<div class="actions no-print" style="justify-content:space-between;margin-top:12px">
- <button class="btn light" onclick="prev()">← Page précédente</button>
- <button class="btn pink" onclick="next()">Page suivante →</button>
-</div>
-</main>
-
-<div class="modal" id="summary">
-<div class="modalbox">
- <div class="modalhead"><h2>📋 Sommaire — 20 pages</h2><button class="btn light" onclick="closeSummary()">Fermer</button></div>
- <div class="grid" id="summaryGrid"></div>
-</div>
-</div>
-
+<section class="panel" id="summary"><h2>📋 Sommaire</h2><div class="links" id="summaryLinks"></div></section>
+<section class="panel" id="favorites"><h2>❤️ Mes favoris</h2><div id="favList"></div></section>
+<section class="panel" id="links"><h2>🔗 Liens utiles</h2><div class="links">
+<a class="btn primary" target="_blank" href="https://tdac.immigration.go.th">TDAC officiel</a>
+<a class="btn primary" target="_blank" href="https://www.diplomatie.gouv.fr/fr/information-par-pays/thailande/conseils-aux-voyageurs-entree-sejour">France Diplomatie</a>
+<a class="btn green" target="_blank" href="https://www.trip.com/?Allianceid=9852508&SID=327644129&trip_sub1=&trip_sub3=D19106369">Trip.com</a>
+<a class="btn orange" target="_blank" href="https://gyg.me/qSQwVEug">GetYourGuide</a>
+<a class="btn green" target="_blank" href="https://12go.asia/?z=16569415">12Go</a>
+<a class="btn primary" target="_blank" href="https://safetywing.com/nomad-insurance?referenceID=26576610&campaign=thai-malin&utm_campaign=thai-malin&utm_source=26576610&utm_medium=Ambassador">SafetyWing</a>
+<a class="btn" style="background:#673ab7" target="_blank" href="https://airalo.pxf.io/PzWeQQ">Airalo</a>
+</div></section>
+<section class="panel" id="checklist"><h2>☑️ Ma checklist</h2><div class="checks">
+<label class="check"><input type="checkbox" data-k="passport">Passeport</label><label class="check"><input type="checkbox" data-k="tdac">TDAC</label>
+<label class="check"><input type="checkbox" data-k="tickets">Billets</label><label class="check"><input type="checkbox" data-k="hotel">Hébergement</label>
+<label class="check"><input type="checkbox" data-k="insurance">Assurance</label><label class="check"><input type="checkbox" data-k="esim">eSIM</label>
+<label class="check"><input type="checkbox" data-k="copies">Copies numériques</label><label class="check"><input type="checkbox" data-k="money">Argent</label>
+</div></section>
+<section class="panel" id="book"><h2>📖 Mon livre de voyage</h2><p>Interface prête pour créer le livre illustré personnalisé.</p></section>
+<section class="panel" id="film"><h2>🎬 Mon film de voyage IA</h2><p>Interface prête pour transformer le livre en petit film animé personnalisé.</p></section>
+</main></div>
 <script>
-const pages = [{"title": "Bienvenue en Thaïlande"}, {"title": "Avant de partir"}, {"title": "Documents & TDAC"}, {"title": "Visa & entrée en Thaïlande"}, {"title": "Vols & réservations"}, {"title": "Argent & paiement"}, {"title": "eSIM & Internet"}, {"title": "Ma valise"}, {"title": "Mon budget"}, {"title": "Arrivée en Thaïlande"}, {"title": "Se déplacer"}, {"title": "Se loger"}, {"title": "Manger en Thaïlande"}, {"title": "Visiter les incontournables"}, {"title": "Mon itinéraire"}, {"title": "Conseils pratiques"}, {"title": "Culture & traditions"}, {"title": "Shopping & souvenirs"}, {"title": "Excursions & activités"}, {"title": "SOS & checklist finale"}];
-const LINKS = [[["Commencer", "#p2"]], [["Centre de réservation", "https://www.trip.com/?Allianceid=9852508&SID=327644129&trip_sub1=&trip_sub3=D19106369"]], [["TDAC officiel", "https://tdac.immigration.go.th"], ["France Diplomatie", "https://www.diplomatie.gouv.fr/fr/information-par-pays/thailande/conseils-aux-voyageurs-entree-sejour"]], [["Ambassade de Thaïlande", "https://www.thaiembassy.fr/fr/visa-rdv/infos-generales/"]], [["Trip.com", "https://www.trip.com/?Allianceid=9852508&SID=327644129&trip_sub1=&trip_sub3=D19106369"]], [["Convertisseur", "https://www.xe.com/"]], [["Airalo", "https://airalo.pxf.io/PzWeQQ"]], [["Checklist", "#p20"]], [["Budget", "#p9"]], [["12Go", "https://12go.asia/?z=16569415"]], [["12Go", "https://12go.asia/?z=16569415"]], [["Trip.com", "https://www.trip.com/?Allianceid=9852508&SID=327644129&trip_sub1=&trip_sub3=D19106369"]], [["GetYourGuide", "https://gyg.me/qSQwVEug"]], [["GetYourGuide", "https://gyg.me/qSQwVEug"]], [["Mon itinéraire", "#p15"]], [["France Diplomatie", "https://www.diplomatie.gouv.fr/fr/information-par-pays/thailande/conseils-aux-voyageurs-entree-sejour"]], [["Conseils voyageurs", "https://www.diplomatie.gouv.fr/fr/information-par-pays/thailande/conseils-aux-voyageurs-entree-sejour"]], [["Activités", "https://gyg.me/qSQwVEug"]], [["GetYourGuide", "https://gyg.me/qSQwVEug"]], [["Retour au début", "#p1"], ["TDAC", "https://tdac.immigration.go.th"]]];
-const CREOLE = ["Mi connais la chaleur… mé la Thaïlande i vaut vraiment le voyage ! 😎", "Un bon départ, c’est déjà la moitié du voyage. Mi vérifie tout avant de fermer la valise ! 😄", "Mi mets tout dans téléphone ek dans le cloud. Comme ça, mi lé tranquille ! 😂", "Mi vérifie la durée avant de partir. Pas besoin de surprise à l’arrivée ! 😉", "Mi compare avant mi clique. Le premier prix vu lé pas toujours le meilleur !", "Mi garde un peu de cash, mé mi évite de voyager avec tout mon budget dans la poche !", "Mi ferai l’eSIM quand mi sera arrivé ? Non non ! Prépare avant de décoller. 😉", "« Mi prends tout, au cas où… » Non. Ta valise n’a pas besoin de déménager à Bangkok ! 😄", "Mi prévois une enveloppe plaisir… parce qu’en Thaïlande, mi connais déjà ! 😂", "Chaleur + fatigue + décalage… doucement. Mi arrive, mi respire, mi bois un coup. 😎", "Mi regarde le prix avant de monter. Une petite comparaison peut économiser gros !", "Mi choisis selon la zone. Un bon emplacement, ça change tout !", "« Mi mange pimenté, mi viens de La Réunion ! » Oui… mais commence doucement ! 🌶️", "Mi profite, mi respecte, mi garde de la place pour les surprises !", "Mi prépare un itinéraire… mé mi garde un peu de liberté pour les coups de cœur !", "Un peu de bon sens et tout se passe bien. Profite l’esprit tranquille !", "Un sourire, un wai et un peu de respect : mi lé déjà bien accueilli ! 🙏", "Mi garde une petite place pour les souvenirs… sinon la valise va encore râler ! 😂", "Mi teste, mi découvre, mi profite. C’est ça aussi le voyage !", "Bon, maintenant que ou lé prêt… direction la Thaïlande ! 🇷🇪✈️🇹🇭"];
-let current=1;
-const storeKey='thai-malin-final-test';
-let state=JSON.parse(localStorage.getItem(storeKey)||'{}');
-if(!state.favs) state.favs=[];
-if(!state.checks) state.checks={};
-
-function save(){localStorage.setItem(storeKey,JSON.stringify(state))}
+const titles=["Bienvenue en Thaïlande", "Avant de partir", "Documents & TDAC", "Visa & Entrée en Thaïlande", "Vols & Réservations", "Assurance voyage", "eSIM & Internet", "Mon argent en Thaïlande", "Ma valise", "Arrivée en Thaïlande", "Se déplacer en Thaïlande", "Se loger", "Manger en Thaïlande", "Visiter les incontournables", "Itinéraires recommandés", "Conseils pratiques au quotidien", "Culture & Traditions", "Shopping & Souvenirs", "Idées d’excursions et activités", "Numéros utiles & SOS"];
+let page=1;
+const state=JSON.parse(localStorage.getItem('tm-state')||'{}');
+function go(n){page=Math.max(1,Math.min(20,n));render();window.scrollTo({top:0,behavior:'smooth'});}
 function render(){
- const p=pages[current-1];
- document.getElementById('counter').textContent=current+' / 20';
- document.getElementById('pageImage').src='assets/page-'+String(current).padStart(2,'0')+'.jpg';
- document.getElementById('pageImage').alt=p.title;
- document.getElementById('pageTitle').textContent=p.title;
- document.getElementById('creole').textContent=CREOLE[current-1];
- document.getElementById('links').innerHTML='';
- (LINKS[current-1]||[]).forEach(([label,url])=>{
-   const a=document.createElement('a');a.className='btn';a.textContent=label+' →';a.href=url;
-   if(url.startsWith('http')){a.target='_blank';a.rel='noopener'}
-   document.getElementById('links').appendChild(a);
- });
- renderHotspots(); renderChecks(); renderFavs();
- window.scrollTo({top:0,behavior:'smooth'});
+ document.getElementById('counter').textContent=page+' / 20';
+ document.getElementById('pageImage').src='assets/page-'+String(page).padStart(2,'0')+'.png';
+ document.getElementById('pageImage').alt=titles[page-1];
+ const side=document.getElementById('side');side.innerHTML='';
+ titles.forEach((t,i)=>{let b=document.createElement('button');b.className='thumb '+(i+1===page?'active':'');b.onclick=()=>go(i+1);b.innerHTML='<img src="assets/page-'+String(i+1).padStart(2,'0')+'.png"><small>'+(i+1)+' — '+t+'</small>';side.appendChild(b);});
 }
-function next(){current=current===20?1:current+1;render()}
-function prev(){current=current===1?20:current-1;render()}
-function openSummary(){document.getElementById('summary').classList.add('open')}
-function closeSummary(){document.getElementById('summary').classList.remove('open')}
-function toggleFullscreen(){
- const el=document.documentElement;
- if(!document.fullscreenElement) el.requestFullscreen?.(); else document.exitFullscreen?.();
-}
-function toggleFavorite(){
- const i=state.favs.indexOf(current);
- if(i>=0) state.favs.splice(i,1); else state.favs.push(current);
- save();renderFavs();
-}
-function renderFavs(){
- const panel=document.getElementById('favoritesPanel'); const box=document.getElementById('favorites');
- if(!state.favs.length){box.innerHTML='<div class="favitem">Aucun favori pour le moment.</div>';return}
- panel.classList.remove('hidden');
- box.innerHTML=state.favs.map(n=>`<button class="favitem" onclick="current=${n};render()">${n}. ${pages[n-1].title} ❤️</button>`).join('');
-}
-function renderHotspots(){
- const box=document.getElementById('hotspots'); box.innerHTML='';
- // Zones générales directement sur les boutons/encadrés du visuel.
- const zones = [
-   {x:5,y:75,w:90,h:10, action:'links'},
-   {x:5,y:88,w:90,h:8, action:'links'}
- ];
- zones.forEach(z=>{
-   const b=document.createElement('button');b.className='hotspot';
-   b.style=`left:${z.x}%;top:${z.y}%;width:${z.w}%;height:${z.h}%`;
-   b.title='Ouvrir les liens de cette page';
-   b.onclick=()=>document.getElementById('info').scrollIntoView({behavior:'smooth'});
-   box.appendChild(b);
- });
-}
-function renderChecks(){
- const box=document.getElementById('checkspots');box.innerHTML='';
- // 5 cases interactives, placées dans la zone centrale basse des pages.
- const ys=[53,61,69,77,85];
- ys.forEach((y,i)=>{
-   const id=current+'_'+i;
-   const b=document.createElement('button');b.className='checkspot';
-   b.style.left='6%';b.style.top=y+'%';b.title='Case '+(i+1);
-   if(state.checks[id]) b.classList.add('checked');
-   b.onclick=()=>{state.checks[id]=!state.checks[id];save();renderChecks()};
-   box.appendChild(b);
- });
-}
-function buildSummary(){
- const g=document.getElementById('summaryGrid');
- g.innerHTML=pages.map((p,i)=>`<button class="thumb ${i+1===current?'active':''}" onclick="current=${i+1};render();closeSummary()"><img src="assets/page-${String(i+1).padStart(2,'0')}.jpg"><b>${i+1}. ${p.title}</b></button>`).join('');
-}
-document.getElementById('summary').addEventListener('click',e=>{if(e.target.id==='summary')closeSummary()});
-document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();if(e.key==='Escape')closeSummary()});
-buildSummary();render();
-</script>
-</body>
-</html>
+function show(id){document.querySelectorAll('.panel').forEach(x=>x.classList.remove('show'));document.getElementById(id).classList.add('show');document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+function toggleFavorite(){let a=JSON.parse(localStorage.getItem('tm-favs')||'[]');if(a.includes(page))a=a.filter(x=>x!==page);else a.push(page);localStorage.setItem('tm-favs',JSON.stringify(a));buildFav();}
+function buildSummary(){let s=document.getElementById('summaryLinks');titles.forEach((t,i)=>{let b=document.createElement('button');b.className='bottom light';b.textContent=(i+1)+' — '+t;b.onclick=()=>go(i+1);s.appendChild(b);});}
+function buildFav(){let f=document.getElementById('favList');let a=JSON.parse(localStorage.getItem('tm-favs')||'[]');f.innerHTML=a.length?'':'Aucun favori pour le moment.';a.forEach(n=>{let b=document.createElement('button');b.className='bottom light';b.textContent=n+' — '+titles[n-1];b.onclick=()=>go(n);f.appendChild(b);});}
+document.querySelectorAll('input[type=checkbox]').forEach(c=>{c.checked=!!state[c.dataset.k];c.onchange=()=>{state[c.dataset.k]=c.checked;localStorage.setItem('tm-state',JSON.stringify(state));};});
+buildSummary();buildFav();render();
+</script></body></html>

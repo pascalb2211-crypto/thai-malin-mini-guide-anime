@@ -18,36 +18,12 @@ main{padding:12px}.viewer{position:relative;max-width:1400px;margin:auto;backgro
 .checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}.check{padding:9px;border:1px solid #dce6e4;border-radius:10px;font-weight:800;background:#f7faf9}.check input{width:19px;height:19px;vertical-align:middle;margin-right:7px;accent-color:#1fa66b}
 @media(max-width:800px){.top{height:auto;flex-wrap:wrap;gap:6px}.brand{font-size:17px;white-space:nowrap}.counter{white-space:nowrap}.tool{padding:7px 9px;font-size:13px}.side{max-height:none}.layout{grid-template-columns:1fr}.side{display:flex;overflow-x:auto;max-height:none}.thumb{min-width:100px}.title{display:none}.checks{grid-template-columns:1fr}}
 
-.hp{color:#17323e;line-height:1.55}
-.hp-hero{display:grid;grid-template-columns:1.05fr 1fr;background:#062554;color:#fff}
-.hp-hero-text{padding:34px 30px 30px;display:flex;flex-direction:column;justify-content:center;gap:10px}
-.hp-kicker{font-size:13px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#ff9db6}
-.hp-hero h2{margin:0;font-size:clamp(28px,4.2vw,46px);line-height:1.05;font-weight:900}
-.hp-hero p{margin:0;font-size:17px;color:#e6eef8;max-width:34em}
-.hp-date{align-self:flex-start;margin-top:6px;background:#ffffff1f;border:1px solid #ffffff40;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:800}
-.hp .hp-hero-img{width:100%;height:100%;min-height:260px;object-fit:cover;display:block;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 22%);mask-image:linear-gradient(90deg,transparent 0,#000 22%)}
-.hp-body{padding:22px clamp(14px,3vw,30px) 28px}
-.hp-alert{background:#fff4d6;border:2px solid #f0b429;border-radius:14px;padding:14px 16px;color:#4a3300;font-size:16px;margin-bottom:20px}
-.hp-alert b,.hp-alert strong{color:#3a2600}
-.hp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
-.hp-card{background:#f7faf9;border:1px solid #d8e5e2;border-radius:16px;padding:16px;border-top:5px solid var(--c,#1676d2)}
-.hp-card h3{margin:0 0 8px;font-size:19px;color:#062554}
-.hp-card .ic{font-size:26px;display:block;margin-bottom:4px}
-.hp-card ul{margin:0;padding-left:18px}.hp-card li{margin:5px 0}
-.hp-h{font-size:22px;color:#062554;margin:8px 0 12px}
-.hp-steps{counter-reset:s;list-style:none;padding:0;margin:0 0 18px;display:grid;gap:10px}
-.hp-steps li{counter-increment:s;display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #d8e5e2;border-radius:14px;padding:12px 14px}
-.hp-steps li::before{content:counter(s);flex:none;width:32px;height:32px;border-radius:50%;background:#ed4775;color:#fff;font-weight:900;display:grid;place-items:center}
-.hp-tip{background:#e8f3ff;border-left:5px solid #1676d2;border-radius:10px;padding:12px 14px;margin:0 0 18px}
-.hp-warn{background:#ffe9ee;border-left:5px solid #ed4775;border-radius:10px;padding:12px 14px;margin:0 0 18px;color:#5a0f24}
-.hp-cta{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 18px}
-.hp-cta a,.hp-cta button{display:inline-block;padding:12px 16px;border-radius:12px;font-weight:900;font-size:15px;text-decoration:none;border:0;cursor:pointer;color:#fff;background:#125fb0}
-.hp-cta .pink{background:#c8305c}.hp-cta .green{background:#137a50}
-.hp-src{font-size:13px;color:#4d5762;border-top:1px solid #d8e5e2;padding-top:12px}
-.hp-src a{color:#125fb0;font-weight:800}
-.hp-nav{display:flex;justify-content:space-between;gap:10px;margin-top:14px}
-.hp-nav button{background:#eef4f3;color:#17323e;padding:10px 14px;border-radius:10px;font-weight:900}
-@media(max-width:800px){.hp-hero{grid-template-columns:1fr}.hp-hero-text{order:2;padding:22px 18px}.hp .hp-hero-img{order:1;min-height:0;height:210px;-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);mask-image:linear-gradient(180deg,#000 70%,transparent)}.hp-grid{grid-template-columns:1fr}}
+.hotspot:hover{background:#ffffff33;outline:3px solid #fff;box-shadow:0 0 0 3px #ff4778,0 8px 22px #0006}
+.editing .hotspot{pointer-events:none;outline:2px dashed #ff4778;background:#ff477822}
+.drawbox{position:absolute;border:2px dashed #ff4778;background:#ff477833;pointer-events:none}
+#editpanel{position:fixed;right:12px;bottom:12px;width:min(420px,92vw);background:#062554;color:#fff;border-radius:14px;padding:12px;z-index:50;box-shadow:0 10px 30px #0008;font-size:13px}
+#editpanel textarea{width:100%;height:150px;font:12px monospace;border-radius:8px;border:0;padding:6px}
+#editpanel button{margin:6px 6px 0 0;padding:8px 12px;border-radius:8px;font-weight:900}
 </style></head><body>
 <header><div class="top">
 <div class="brand">🌺 THAÏ <span>MALIN</span></div><div class="title">Mini-guide Réunionnais</div>
@@ -56,7 +32,7 @@ main{padding:12px}.viewer{position:relative;max-width:1400px;margin:auto;backgro
 <button class="tool" onclick="show('favorites')">♡ Favoris</button><button class="tool" onclick="document.documentElement.requestFullscreen?.()">⛶</button>
 </div></header>
 <div class="layout"><aside class="side" id="side"></aside><main>
-<div class="viewer" id="viewer"><img id="pageImage" alt=""><div id="htmlPage" style="display:none"></div></div>
+<div class="viewer" id="viewer"><img id="pageImage" alt=""></div>
 <div class="bottom">
 <button class="primary" onclick="show('links')">🔗 Liens utiles</button>
 <button class="pink" onclick="show('checklist')">☑️ Ma checklist</button>
@@ -84,46 +60,6 @@ main{padding:12px}.viewer{position:relative;max-width:1400px;margin:auto;backgro
 <section class="panel" id="book"><h2>📖 Mon livre de voyage</h2><p>Interface prête pour créer le livre illustré personnalisé.</p></section>
 <section class="panel" id="film"><h2>🎬 Mon film de voyage IA</h2><p>Interface prête pour transformer le livre en petit film animé personnalisé.</p></section>
 </main></div>
-<template id="html-page-3"><article class="hp">
-<section class="hp-hero">
- <div class="hp-hero-text">
-  <span class="hp-kicker">Page 3 · Avant de partir</span>
-  <h2>Documents &amp; TDAC</h2>
-  <p>Passeport, durée sans visa, carte d’arrivée numérique : l’essentiel pour entrer en Thaïlande depuis La Réunion, sans stress.</p>
-  <span class="hp-date">✔ Infos vérifiées le 24 septembre 2026</span>
- </div>
- <img class="hp-hero-img" src="assets/hero-documents.webp" alt="Voyageur assis face à une baie thaïlandaise, bateau longtail et falaises calcaires" width="665" height="403">
-</section>
-<div class="hp-body">
- <div class="hp-alert"><strong>Nouveau depuis le 15 septembre 2026 :</strong> les Français peuvent rester <b>30 jours</b> sans visa en Thaïlande (contre 60 avant), pour le tourisme uniquement. Si tu es entré(e) avant cette date, tu gardes la durée tamponnée à ton arrivée.</div>
-
- <div class="hp-grid">
-  <div class="hp-card" style="--c:#1676d2"><span class="ic">🛂</span><h3>Passeport</h3>
-   <ul><li>Passeport en cours de validité, <b>valable 6 mois minimum</b> après ta date d’entrée.</li><li>La carte d’identité ne suffit pas.</li><li>Chaque voyageur a son propre passeport, enfants compris.</li></ul></div>
-  <div class="hp-card" style="--c:#1fa66b"><span class="ic">🗓️</span><h3>Visa &amp; durée</h3>
-   <ul><li><b>30 jours gratuits</b>, sans visa, pour le tourisme.</li><li>Prolongation possible de 30 jours au bureau d’immigration sur place : <b>1 900 THB</b> (environ 50 €).</li><li>Dépasser la durée autorisée : amende, voire expulsion.</li><li>Séjour plus long que prévu ? Renseigne-toi sur un visa avant de partir.</li></ul></div>
-  <div class="hp-card" style="--c:#ed4775"><span class="ic">📲</span><h3>TDAC</h3>
-   <ul><li>Carte d’arrivée numérique <b>obligatoire</b> et <b>gratuite</b>.</li><li>À remplir dans les <b>3 jours avant l’arrivée</b> (jour d’arrivée inclus).</li><li>Une par voyageur, bébés compris.</li><li>Une nouvelle à chaque entrée en Thaïlande.</li></ul></div>
- </div>
-
- <h3 class="hp-h">Remplir le TDAC en 4 étapes</h3>
- <ol class="hp-steps">
-  <li><div><b>Va sur le site officiel</b> <i>tdac.immigration.go.th</i> et clique sur « Arrival Card ».</div></li>
-  <li><div><b>Renseigne ton identité</b> comme sur ton passeport. Le formulaire se remplit en anglais.</div></li>
-  <li><div><b>Ajoute ton voyage</b> : date d’arrivée, vol, adresse de ta première nuit, et les pays visités dans les 14 jours avant l’arrivée.</div></li>
-  <li><div><b>Garde ton QR code</b> : fais une capture d’écran et une copie hors ligne, il peut t’être demandé à l’arrivée.</div></li>
- </ol>
- <div class="hp-tip">🕒 <b>Astuce 974 :</b> la Thaïlande a 3 h d’avance sur La Réunion. Pense à saisir la date d’arrivée à l’heure thaïlandaise, surtout après un vol de nuit.</div>
- <div class="hp-warn">⚠️ <b>Attention aux faux sites.</b> Le TDAC est gratuit. Des sites copies font payer des « frais de dossier » : utilise uniquement le lien officiel ci-dessous.</div>
-
- <div class="hp-cta">
-  <a href="https://tdac.immigration.go.th" target="_blank" rel="noopener">Ouvrir le TDAC officiel</a>
-  <a class="green" href="https://www.diplomatie.gouv.fr/fr/information-par-pays/thailande/conseils-aux-voyageurs-entree-sejour" target="_blank" rel="noopener">France Diplomatie : entrée &amp; séjour</a>
-  <button class="pink" onclick="show('checklist')">☑️ Ouvrir ma checklist</button>
- </div>
- <p class="hp-src">Sources : France Diplomatie, ambassade de Thaïlande à Paris, Royal Gazette du 31 août 2026. Les règles d’entrée peuvent changer : vérifie toujours sur les sites officiels avant de partir. Dernière vérification : 24 septembre 2026.</p>
- <div class="hp-nav"><button onclick="go(2)">← Avant de partir</button><button onclick="go(4)">Visa &amp; Entrée →</button></div>
-</div></article></template>
 <script>
 const titles=["Bienvenue en Thaïlande", "Avant de partir", "Documents & TDAC", "Visa & Entrée en Thaïlande", "Vols & Réservations", "Assurance voyage", "eSIM & Internet", "Mon argent en Thaïlande", "Ma valise", "Arrivée en Thaïlande", "Se déplacer en Thaïlande", "Se loger", "Manger en Thaïlande", "Visiter les incontournables", "Itinéraires recommandés", "Conseils pratiques au quotidien", "Culture & Traditions", "Shopping & Souvenirs", "Idées d’excursions et activités", "Numéros utiles & SOS"];
 let page=1;
@@ -159,17 +95,49 @@ const state=JSON.parse(localStorage.getItem('tm-state')||'{}');
 function go(n){page=Math.max(1,Math.min(20,n));render();window.scrollTo({top:0,behavior:'smooth'});}
 function render(){
  document.getElementById('counter').textContent=page+' / 20';
- const img=document.getElementById('pageImage'),hp=document.getElementById('htmlPage'),tpl=document.getElementById('html-page-'+page);
- if(tpl){hp.replaceChildren(tpl.content.cloneNode(true));hp.style.display='block';img.style.display='none';}
- else{hp.replaceChildren();hp.style.display='none';img.style.display='block';img.src='assets/page-'+String(page).padStart(2,'0')+'.png';img.alt=titles[page-1];}
+ const img=document.getElementById('pageImage');
+ img.src='assets/page-'+String(page).padStart(2,'0')+'.webp';img.alt=titles[page-1];
  drawHotspots();
- const side=document.getElementById('side');side.innerHTML='';
- titles.forEach((t,i)=>{let b=document.createElement('button');b.className='thumb '+(i+1===page?'active':'');b.onclick=()=>go(i+1);b.innerHTML='<img src="assets/page-'+String(i+1).padStart(2,'0')+'.png"><small>'+(i+1)+' — '+t+'</small>';side.appendChild(b);});
+ const side=document.getElementById('side');
+ if(!side.children.length){titles.forEach((t,i)=>{let b=document.createElement('button');b.onclick=()=>go(i+1);
+  const im=document.createElement('img');im.src='assets/thumbs/thumb-'+String(i+1).padStart(2,'0')+'.webp';im.alt='';im.loading='lazy';im.decoding='async';
+  const sm=document.createElement('small');sm.textContent=(i+1)+' — '+t;b.append(im,sm);side.appendChild(b);});}
+ [...side.children].forEach((b,i)=>b.className='thumb '+(i+1===page?'active':''));
 }
 function show(id){document.querySelectorAll('.panel').forEach(x=>x.classList.remove('show'));document.getElementById(id).classList.add('show');document.getElementById(id).scrollIntoView({behavior:'smooth'});}
 function toggleFavorite(){let a=JSON.parse(localStorage.getItem('tm-favs')||'[]');if(a.includes(page))a=a.filter(x=>x!==page);else a.push(page);localStorage.setItem('tm-favs',JSON.stringify(a));buildFav();}
 function buildSummary(){let s=document.getElementById('summaryLinks');titles.forEach((t,i)=>{let b=document.createElement('button');b.className='bottom light';b.textContent=(i+1)+' — '+t;b.onclick=()=>go(i+1);s.appendChild(b);});}
 function buildFav(){let f=document.getElementById('favList');let a=JSON.parse(localStorage.getItem('tm-favs')||'[]');f.innerHTML=a.length?'':'Aucun favori pour le moment.';a.forEach(n=>{let b=document.createElement('button');b.className='bottom light';b.textContent=n+' — '+titles[n-1];b.onclick=()=>go(n);f.appendChild(b);});}
 document.querySelectorAll('input[type=checkbox]').forEach(c=>{c.checked=!!state[c.dataset.k];c.onchange=()=>{state[c.dataset.k]=c.checked;localStorage.setItem('tm-state',JSON.stringify(state));};});
-buildSummary();buildFav();render();
+
+function initEdit(){
+ if(!/[?&]edit/.test(location.search))return;
+ document.body.classList.add('editing');
+ const v=document.getElementById('viewer'),img=document.getElementById('pageImage');
+ const panel=document.createElement('div');panel.id='editpanel';
+ const info=document.createElement('div');info.textContent='Mode placement : trace un rectangle sur l’image avec la souris, puis indique où il mène. Copie ensuite le code ci-dessous.';
+ const out=document.createElement('textarea');out.readOnly=true;
+ const bCopy=document.createElement('button');bCopy.textContent='Copier le code';bCopy.className='primary';
+ const bUndo=document.createElement('button');bUndo.textContent='Annuler la dernière zone';bUndo.className='light';
+ panel.append(info,out,bCopy,bUndo);document.body.appendChild(panel);
+ const refresh=()=>{out.value=page+':[\n'+(HOTSPOTS[page]||[]).map(h=>' '+JSON.stringify(h)).join(',\n')+'\n],';};
+ const baseRender=render;render=function(){baseRender();refresh();};refresh();
+ bCopy.onclick=()=>{out.select();navigator.clipboard?.writeText(out.value);bCopy.textContent='Copié ✔';setTimeout(()=>bCopy.textContent='Copier le code',1500);};
+ bUndo.onclick=()=>{(HOTSPOTS[page]||[]).pop();drawHotspots();refresh();};
+ let st=null,box=null;
+ const pos=e=>{const r=img.getBoundingClientRect();return{x:Math.min(100,Math.max(0,(e.clientX-r.left)/r.width*100)),y:Math.min(100,Math.max(0,(e.clientY-r.top)/r.height*100))};};
+ v.addEventListener('mousedown',e=>{e.preventDefault();st=pos(e);box=document.createElement('div');box.className='drawbox';v.appendChild(box);});
+ window.addEventListener('mousemove',e=>{if(!st)return;const p=pos(e);Object.assign(box.style,{left:Math.min(st.x,p.x)+'%',top:Math.min(st.y,p.y)+'%',width:Math.abs(p.x-st.x)+'%',height:Math.abs(p.y-st.y)+'%'});});
+ window.addEventListener('mouseup',e=>{
+  if(!st)return;const p=pos(e);box.remove();
+  const h={x:+Math.min(st.x,p.x).toFixed(2),y:+Math.min(st.y,p.y).toFixed(2),w:+Math.abs(p.x-st.x).toFixed(2),h:+Math.abs(p.y-st.y).toFixed(2)};st=null;
+  if(h.w<1||h.h<1)return;
+  const t=(prompt('Où doit mener cette zone ?\nColle un lien (https://…), ou tape un numéro de page (1 à 20), ou panel:checklist / panel:book / panel:film / panel:links')||'').trim();
+  if(!t)return;
+  h.label=prompt('Nom de la zone (ex. Booking) :','')||'Lien';
+  if(/^\d+$/.test(t))h.page=+t;else if(t.startsWith('panel:'))h.panel=t.slice(6);else h.href=/^https?:/.test(t)?t:'https://'+t;
+  (HOTSPOTS[page]=HOTSPOTS[page]||[]).push(h);drawHotspots();refresh();
+ });
+}
+buildSummary();buildFav();render();initEdit();
 </script></body></html>

@@ -69,3 +69,40 @@ Page 19 intégrée : « Excursions & Activités » — enfin le bon sujet, logo 
 Note : les dossiers _reserved/ et _pending/ contiennent des visuels reçus en trop ou obsolètes pendant la construction (3 visuels de clôture redondants avec la page 20, remplacés par les vraies pages 18/19 corrigées). Ils ne sont pas utilisés par le site et peuvent être supprimés sans impact.
 
 Fix mobile : les vignettes de la barre du haut étaient trop grosses sur téléphone (100px + texte sous chaque image, prenant beaucoup de hauteur d'écran). Réduites à 52px, texte masqué sur mobile (déjà visible via le numéro de page en haut).
+
+Ajout : bouton "🔍 Agrandir" sur chaque page (+ clic direct sur l'image) qui ouvre une vue plein écran zoomée (220%) avec défilement pour bien lire le texte des cartes, fermeture par ✕ ou touche Échap. Le pincement (pinch-to-zoom) natif fonctionne aussi sur mobile. N'interfère pas avec les zones cliquables existantes (elles restent prioritaires pour la navigation).
+
+Page 11 REMPLACÉE : « Se loger en Thaïlande » (remplace « Astuces et bons plans », qui ne contenait plus que des redirections). 6 zones cliquables : Bangkok / Îles et plages / Nord → page 6 (Où aller), Types d'hébergement / Où réserver / Astuces réservation → Liens utiles.
+
+🎉 Le sujet « Se loger » — disparu depuis la page 12 — a maintenant sa vraie page dédiée. Il reste 4 sujets fantômes (Se déplacer, Manger, Numéros utiles, Shopping & Souvenirs) si Pascal veut continuer à combler les trous du plan initial.
+
+Page 10 REMPLACÉE : « Se déplacer en Thaïlande » (remplace « Le petit plus pour un séjour parfait », qui ne contenait plus que des redirections). 6 zones cliquables : Vols intérieurs / Trains en Thaïlande / Bus et vans / Location scooter ou voiture → Liens utiles (12Go et autres plateformes de réservation transport), Bangkok au quotidien / Îles et ferries → page 6 (Où aller).
+Corrections en cascade suite au changement de sujet de la page 10 :
+- Page 16 : « Argent et paiements » et « Communication et internet » pointaient vers l'ancienne page 10 (Applications/Argent) → repointées vers Liens utiles.
+- Nettoyage complémentaire : plusieurs cartes « transport » existantes qui redirigeaient faute de page dédiée pointent maintenant vers la vraie page 10 : page 5 « Moyens de transport », page 8 « Transports », page 12 « Se déplacer facilement », page 13 « Les déplacements », page 16 « Se déplacer facilement ».
+Vérifié : `grep "page": 10` ne retourne plus que ces 5 renvois corrects vers le nouveau contenu transport ; balayage complet des 20 pages en navigateur headless = zéro erreur JS/réseau ; alignement pixel-perfect des 6 hotspots confirmé par capture avec surbrillance rouge.
+
+🎉 Le sujet « Se déplacer » — disparu depuis la page 10 — a maintenant sa vraie page dédiée, avec en prime tous les anciens renvois « transport » du guide qui pointent enfin vers elle. Il reste 3 sujets fantômes (Manger, Numéros utiles, Shopping & Souvenirs). Brief déjà donné à Pascal pour remplacer la page 16 par « Manger en Thaïlande » (en préservant les numéros d'urgence 191/1669).
+
+Page 16 REMPLACÉE : « Manger en Thaïlande » (remplace « Conseils pratiques au quotidien »). 6 zones cliquables : Street food thaïlandaise / Les plats incontournables / Où manger ? / Boissons et spécialités / Régimes spéciaux / Bon à savoir → toutes vers Liens utiles. Les numéros d'urgence 191 (Police) et 1669 (Urgences médicales) sont conservés, affichés dans la carte « Bon à savoir ».
+Corrections en cascade suite au changement de sujet de la page 16 (qui n'est plus « bons plans / conseils pratiques ») :
+- Page 1 : mots-clés « Bons plans » et « Astuces et bons plans » pointaient vers la page 16 en anticipant du contenu « conseils/tips » → repointés vers la page 8 (Conseils pratiques pour un séjour réussi), qui couvre bien ce thème.
+- Anciennes cartes « Formalités et documents » → page 18 et « Se loger malin » → page 8 (qui dupliquaient du contenu ailleurs) ont disparu avec le nouveau contenu, plus besoin de redirection puisque la page 16 ne couvre plus ces sujets.
+- Cartes déjà orientées « nourriture » ailleurs dans le guide, qui redirigeaient faute de page dédiée, pointent maintenant vers la vraie page 16 : page 1 « Gastronomie » et « Cuisine délicieuse » (mots-clés couverture), page 9 « La gastronomie thaïlandaise », page 13 « La nourriture et l'eau ».
+Vérifié : balayage complet des 20 pages en navigateur headless = zéro erreur JS/réseau ; alignement pixel-perfect des 6 hotspots confirmé par capture avec surbrillance rouge.
+
+🎉 Le sujet « Manger » — disparu depuis la page 16 — a maintenant sa vraie page dédiée, numéros d'urgence préservés, tous les anciens renvois « gastronomie » du guide pointent enfin vers elle. Il reste 2 sujets fantômes (Numéros utiles & SOS complet, Shopping & Souvenirs) — les urgences 191/1669 sont déjà couvertes en partie par cette page 16, donc le sujet le plus prioritaire restant est Shopping & Souvenirs si Pascal veut continuer.
+
+Page 14 REMPLACÉE : « Shopping & Souvenirs en Thaïlande » (remplace « Les petits plus pour une expérience inoubliable », qui était très redondante — 4 cartes sur 6 redirigeaient déjà ailleurs). 6 zones cliquables : Marchés locaux / Souvenirs typiques / Vêtements & artisanat / Où faire de bonnes affaires ? / Centres commerciaux / Bon à savoir (détaxe TouristVAT, douane, contrefaçons) → toutes vers Liens utiles.
+Corrections en cascade suite au changement de sujet de la page 14 :
+- Page 2 : mot-clé « Profiter » pointait vers l'ancienne page 14 (petits plus / expérience inoubliable) → repointé vers la page 9 (À ne pas manquer en Thaïlande), qui correspond mieux à l'idée de « profiter du séjour ».
+- Cartes déjà orientées « shopping/marchés » ailleurs, qui redirigeaient faute de page dédiée, pointent maintenant vers la vraie page 14 : page 1 mot-clé « Shopping et marchés », page 9 « Les marchés et le shopping ».
+Vérifié : balayage complet des 20 pages en navigateur headless = zéro erreur JS/réseau ; alignement pixel-perfect des 6 hotspots confirmé par capture avec surbrillance rouge.
+
+🎉 GUIDE À JOUR : 4 sujets fantômes comblés sur 5 (Se loger, Se déplacer, Manger, Shopping & Souvenirs). Il ne reste que « Numéros utiles & SOS » (déjà partiellement couvert par les urgences 191/1669 sur la page 16). Pascal a choisi d'ajouter une vraie page 21 dédiée plutôt que de sacrifier une page existante — brief donné, en attente de l'image.
+
+🆕 NOUVELLE PAGE 21 AJOUTÉE : « Numéros utiles & SOS en Thaïlande » (le guide passe de 20 à 21 pages, sur demande de Pascal, plutôt que de sacrifier une page existante). 6 zones cliquables : Urgences vitales (191 Police, 1669 Médical, 199 Pompiers) / Tourist Police (1155) / Ambassade de France / Hôpitaux internationaux → Liens utiles ; Assurance voyage → lien affilié SafetyWing (même lien que la page 8) ; Numéros pratiques (Immigration, aéroports, perte de passeport) → Liens utiles.
+Adaptations techniques pour passer à 21 pages : compteur d'en-tête (« 1 / 20 » → « 1 / 21 »), fonction `go()` (limite de navigation 20 → 21), outil d'édition des zones (plage acceptée 1 à 20 → 1 à 21). Le sommaire et la barre de vignettes se génèrent dynamiquement à partir du tableau `titles`, donc aucune autre adaptation nécessaire.
+Vérifié : balayage complet des 21 pages en navigateur headless = zéro erreur JS/réseau, 21 vignettes générées, compteur correct sur chaque page, navigation bloquée au-delà de la page 21 ; alignement pixel-perfect des 6 hotspots confirmé par capture avec surbrillance rouge.
+
+🎉🎉 GUIDE COMPLET : 21/21 pages réelles, tous les 5 sujets fantômes du plan initial sont maintenant comblés (Se loger, Se déplacer, Manger, Shopping & Souvenirs, Numéros utiles & SOS). Chaque remplacement a aussi permis de corriger les anciens renvois devenus obsolètes ailleurs dans le guide.

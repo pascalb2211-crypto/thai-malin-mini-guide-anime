@@ -15,7 +15,9 @@ main{padding:12px}.viewer{position:relative;max-width:1400px;margin:auto;backgro
 .lightbox.open{display:block}
 .lightbox img{width:220%;max-width:none;display:block;margin:24px auto}
 .lightbox .lbClose{position:fixed;top:14px;right:14px;z-index:1000;background:#fff;color:#062554;border-radius:50%;width:42px;height:42px;font-weight:900;font-size:18px;box-shadow:0 4px 14px #0007}
-.lightbox .lbHint{position:fixed;top:16px;left:16px;z-index:1000;background:#ffffffdd;color:#062554;border-radius:10px;padding:7px 11px;font-weight:800;font-size:12px}
+.lightbox .lbHint{position:fixed;top:16px;left:16px;right:70px;z-index:1000;background:#ffffffdd;color:#062554;border-radius:10px;padding:7px 11px;font-weight:800;font-size:12px}
+.lightbox img.qrMode{width:min(85vw,420px);max-width:420px;margin:90px auto 30px;display:block;border-radius:14px;box-shadow:0 10px 40px #000a}
+.lbDownload{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:1000;background:#1fa66b;color:#fff;border-radius:12px;padding:13px 22px;font-weight:900;text-decoration:none;box-shadow:0 6px 18px #0007}
 .hotspot{position:absolute;display:block;border:0;background:transparent;border-radius:10px;cursor:pointer}
 .hotspot:hover{background:#ffffff33;outline:3px solid #fff;box-shadow:0 0 0 3px #ff4778,0 8px 22px #0006}
 .hotspot:focus-visible{outline:3px solid #ff4778}
@@ -30,20 +32,44 @@ main{padding:12px}.viewer{position:relative;max-width:1400px;margin:auto;backgro
 .panel{max-width:1400px;margin:10px auto;background:#fff;border:1px solid #d8e5e2;border-radius:16px;padding:14px;display:none}.panel.show{display:block}
 .links{display:flex;flex-wrap:wrap;gap:8px}.btn{padding:10px 13px;border-radius:10px;color:#fff;text-decoration:none;font-weight:900}
 .checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}.check{padding:9px;border:1px solid #dce6e4;border-radius:10px;font-weight:800;background:#f7faf9}.check input{width:19px;height:19px;vertical-align:middle;margin-right:7px;accent-color:#1fa66b}
-@media(max-width:800px){.top{height:auto;flex-wrap:wrap;gap:6px}.brand{font-size:17px;white-space:nowrap}.counter{white-space:nowrap}.tool{padding:7px 9px;font-size:13px}.side{max-height:none}.layout{grid-template-columns:1fr}.side{display:flex;overflow-x:auto;max-height:none;padding:5px;gap:5px}.thumb{min-width:52px;max-width:52px;padding:2px;margin-bottom:0}.thumb small{display:none}.title{display:none}.checks{grid-template-columns:1fr}}
+.sumSearch{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #d8e5e2;font-size:15px;margin-bottom:18px;font-weight:700;color:#17323e;background:#f7faf9}
+.sumSearch:focus{outline:2px solid #1676d2}
+.sumGrp{margin-bottom:22px}
+.sumGrp:last-child{margin-bottom:0}
+.sumGrp h3{font-size:15px;font-weight:900;color:#062554;margin:0 0 10px;padding-bottom:7px;border-bottom:2px solid #edf4f3}
+.sumGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
+.sumCard{background:#fff;border:1px solid #e3ece9;border-radius:14px;padding:0;overflow:hidden;text-align:left;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
+.sumCard:hover{transform:translateY(-4px);box-shadow:0 10px 24px #17323e22;border-color:#1676d2}
+.sumCard.active{border-color:#ff4778;box-shadow:0 0 0 2px #ff4778}
+.sumThumbWrap{position:relative;display:block;background:#edf4f3}
+.sumThumbWrap img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block}
+.sumNum{position:absolute;top:6px;left:6px;background:#ff4778;color:#fff;font-weight:900;font-size:12px;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px #0004}
+.sumFav{position:absolute;top:6px;right:6px;background:#fff;color:#ff4778;font-weight:900;font-size:13px;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px #0004}
+.sumTitle{display:block;padding:8px 9px;font-size:12px;font-weight:800;color:#17323e;line-height:1.25}
+.sumEmpty{padding:20px;text-align:center;color:#5b7370;font-weight:700}
+@media(max-width:800px){.top{height:auto;flex-wrap:wrap;gap:6px}.brand{font-size:17px;white-space:nowrap}.counter{white-space:nowrap}.tool{padding:7px 9px;font-size:13px}.side{max-height:none}.layout{grid-template-columns:1fr}.side{display:flex;overflow-x:auto;max-height:none;padding:5px;gap:5px}.thumb{min-width:52px;max-width:52px;padding:2px;margin-bottom:0}.thumb small{display:none}.title{display:none}.checks{grid-template-columns:1fr}.sumGrid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px}.sumTitle{font-size:11px;padding:6px 7px}}
+#printAll{display:none}
+@media print{
+ @page{margin:0;size:portrait}
+ body>*{display:none!important}
+ #printAll{display:block!important}
+ #printAll img{width:100%;height:100vh;object-fit:contain;display:block;page-break-after:always;break-after:page;page-break-inside:avoid;break-inside:avoid}
+ #printAll img:last-child{page-break-after:auto;break-after:auto}
+}
 </style></head><body>
 <header><div class="top">
 <div class="brand">🌺 THAÏ <span>MALIN</span></div><div class="title">Mini-guide Réunionnais</div>
-<button class="nav" onclick="go(page-1)">←</button><div class="counter" id="counter">1 / 21</div><button class="nav" onclick="go(page+1)">→</button>
+<button class="nav" onclick="go(page-1)">←</button><div class="counter" id="counter">1 / 23</div><button class="nav" onclick="go(page+1)">→</button>
 <button class="tool" onclick="show('summary')">☷ Sommaire</button><button class="tool" onclick="window.print()">↓ PDF</button>
 <button class="tool" onclick="show('favorites')">♡ Favoris</button><button class="tool" onclick="document.documentElement.requestFullscreen?.()">⛶</button>
 </div></header>
 <div class="layout"><aside class="side" id="side"></aside><main>
 <div class="viewer" id="viewer"><img id="pageImage" alt="" onclick="if(!editMode)openZoom()"><button class="zoomBtn" onclick="openZoom()">🔍 Agrandir</button></div>
 <div class="lightbox" id="lightbox" onclick="if(event.target===this)closeZoom()">
- <div class="lbHint">Pincez ou faites défiler pour lire — touchez ✕ pour fermer</div>
+ <div class="lbHint" id="lbHint">Pincez ou faites défiler pour lire — touchez ✕ pour fermer</div>
  <button class="lbClose" onclick="closeZoom()">✕</button>
  <img id="lbImage" alt="">
+ <a class="lbDownload" id="lbDownload" download style="display:none">📥 Télécharger le QR code</a>
 </div>
 <div class="bottom">
 <button class="primary" onclick="show('links')">🔗 Liens utiles</button>
@@ -52,7 +78,7 @@ main{padding:12px}.viewer{position:relative;max-width:1400px;margin:auto;backgro
 <button class="orange" onclick="show('film')">🎬 Mon film IA</button>
 <button class="light" onclick="toggleFavorite()">♡ Ajouter aux favoris</button>
 </div>
-<section class="panel" id="summary"><h2>📋 Sommaire</h2><div class="links" id="summaryLinks"></div></section>
+<section class="panel" id="summary"><h2>📋 Sommaire</h2><input class="sumSearch" id="summarySearch" type="text" placeholder="🔍 Rechercher une page (ex : visa, manger, shopping…)" oninput="filterSummary()"><div id="summaryLinks"></div></section>
 <section class="panel" id="favorites"><h2>❤️ Mes favoris</h2><div id="favList"></div></section>
 <section class="panel" id="links"><h2>🔗 Liens utiles</h2><div class="links">
 <a class="btn primary" target="_blank" href="https://tdac.immigration.go.th">TDAC officiel</a>
@@ -72,8 +98,9 @@ main{padding:12px}.viewer{position:relative;max-width:1400px;margin:auto;backgro
 <section class="panel" id="book"><h2>📖 Mon livre de voyage</h2><p>Interface prête pour créer le livre illustré personnalisé.</p></section>
 <section class="panel" id="film"><h2>🎬 Mon film de voyage IA</h2><p>Interface prête pour transformer le livre en petit film animé personnalisé.</p></section>
 </main></div>
+<div id="printAll"></div>
 <script>
-const titles=["Bienvenue en Thaïlande", "Avant de partir", "Documents & TDAC", "Visa & Entrée en Thaïlande", "À l’arrivée en Thaïlande", "Où aller en Thaïlande ?", "Itinéraires conseillés", "Conseils pratiques pour un séjour réussi", "À ne pas manquer en Thaïlande", "Se déplacer en Thaïlande", "Se loger en Thaïlande", "En résumé — Tout pour un séjour réussi", "Les erreurs à éviter", "Shopping & Souvenirs en Thaïlande", "Itinéraires recommandés", "Manger en Thaïlande", "Culture & Traditions", "Formalités & Entrée en Thaïlande", "Idées d’excursions et activités", "Prêt pour l’aventure ?", "Numéros utiles & SOS en Thaïlande"];
+const titles=["Bienvenue en Thaïlande", "Avant de partir", "Documents & TDAC", "Visa & Entrée en Thaïlande", "À l’arrivée en Thaïlande", "Où aller en Thaïlande ?", "Itinéraires conseillés", "Conseils pratiques pour un séjour réussi", "À ne pas manquer en Thaïlande", "Se déplacer en Thaïlande", "Se loger en Thaïlande", "En résumé — Tout pour un séjour réussi", "Les erreurs à éviter", "Shopping & Souvenirs en Thaïlande", "Itinéraires recommandés", "Manger en Thaïlande", "Culture & Traditions", "Formalités & Entrée en Thaïlande", "Idées d’excursions et activités", "Prêt pour l’aventure ?", "Numéros utiles & SOS en Thaïlande", "Mon Centre de Réservation", "Fin — Merci !"];
 let page=1;
 const HOTSPOTS={
  // x,y,w,h en % de l'image (restent alignés à toutes les tailles). Cible : href (lien externe) | page (n° de page) | panel (id du panneau)
@@ -199,7 +226,7 @@ const HOTSPOTS={
   {"x": 0.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Voyagez responsable", "panel": "links"},
   {"x": 50.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Immortalisez vos souvenirs", "panel": "links"},
   {"x": 0.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Rejoignez la communauté", "href": "https://thaimalin.fr"},
-  {"x": 50.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Et maintenant… à vous !", "page": 1}
+  {"x": 50.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Et maintenant… à vous !", "page": 21}
  ],
  21:[
   {"x": 0.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Urgences vitales", "panel": "links"},
@@ -208,6 +235,33 @@ const HOTSPOTS={
   {"x": 50.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Hôpitaux internationaux", "panel": "links"},
   {"x": 0.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Assurance voyage", "href": "https://safetywing.com/nomad-insurance?referenceID=26576610&campaign=thai-malin&utm_campaign=thai-malin&utm_source=26576610&utm_medium=Ambassador"},
   {"x": 50.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Numéros pratiques", "panel": "links"}
+ ],
+ 22:[
+  {"x": 0.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Vols et séjours (Trip.com)", "href": "https://www.trip.com/?Allianceid=9852508&SID=327644129&trip_sub1=&trip_sub3=D19106369"},
+  {"x": 50.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Hébergements (Agoda)", "panel": "links"},
+  {"x": 0.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Excursions & Activités (GetYourGuide)", "href": "https://gyg.me/qSQwVEug"},
+  {"x": 50.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Transports en Thaïlande (12Go)", "href": "https://12go.asia/?z=16569415"},
+  {"x": 0.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Cartes SIM & eSIM (Airalo)", "href": "https://airalo.pxf.io/PzWeQQ"},
+  {"x": 50.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Assurance voyage (SafetyWing)", "href": "https://safetywing.com/nomad-insurance?referenceID=26576610&campaign=thai-malin&utm_campaign=thai-malin&utm_source=26576610&utm_medium=Ambassador"},
+  {"x": 36.72, "y": 23.83, "w": 12.5, "h": 10.61, "label": "QR code Trip.com — agrandir / télécharger", "qr": "assets/qr/qr22-1.png"},
+  {"x": 86.91, "y": 23.83, "w": 11.72, "h": 10.16, "label": "QR code Agoda — agrandir / télécharger", "qr": "assets/qr/qr22-2.png"},
+  {"x": 36.33, "y": 47.14, "w": 12.89, "h": 9.31, "label": "QR code GetYourGuide / Klook — agrandir / télécharger", "qr": "assets/qr/qr22-3.png"},
+  {"x": 87.3, "y": 47.14, "w": 11.33, "h": 9.31, "label": "QR code 12Go — agrandir / télécharger", "qr": "assets/qr/qr22-4.png"},
+  {"x": 37.5, "y": 71.29, "w": 11.52, "h": 8.27, "label": "QR code Airalo / Holafly — agrandir / télécharger", "qr": "assets/qr/qr22-5.png"},
+  {"x": 87.5, "y": 70.96, "w": 12.5, "h": 8.98, "label": "QR code SafetyWing — agrandir / télécharger", "qr": "assets/qr/qr22-6.png"}
+ ],
+ 23:[
+  {"x": 1.46, "y": 36.98, "w": 31.54, "h": 29.82, "label": "Mini-guide Thaïlande", "page": 1},
+  {"x": 34.96, "y": 36.98, "w": 31.54, "h": 29.82, "label": "Mini-guide Vietnam", "panel": "links"},
+  {"x": 67.97, "y": 36.98, "w": 30.96, "h": 29.82, "label": "Mini-guide Bali", "panel": "links"},
+  {"x": 1.46, "y": 66.99, "w": 31.54, "h": 20.83, "label": "Newsletter Thaï Malin", "href": "https://thaimalin.fr"},
+  {"x": 34.96, "y": 66.99, "w": 31.54, "h": 20.83, "label": "Facebook Thaï Malin", "panel": "links"},
+  {"x": 67.97, "y": 66.99, "w": 30.96, "h": 20.83, "label": "Application Thaï Malin", "panel": "links"},
+  {"x": 20.51, "y": 54.69, "w": 11.72, "h": 7.68, "label": "QR code mini-guide Thaïlande — agrandir / télécharger", "qr": "assets/qr/qr23-1.png"},
+  {"x": 54.0, "y": 54.69, "w": 11.72, "h": 7.68, "label": "QR code mini-guide Vietnam — agrandir / télécharger", "qr": "assets/qr/qr23-2.png"},
+  {"x": 86.62, "y": 54.69, "w": 11.52, "h": 7.68, "label": "QR code mini-guide Bali — agrandir / télécharger", "qr": "assets/qr/qr23-3.png"},
+  {"x": 20.9, "y": 73.44, "w": 10.74, "h": 7.16, "label": "QR code newsletter — agrandir / télécharger", "qr": "assets/qr/qr23-4.png"},
+  {"x": 54.39, "y": 73.44, "w": 10.74, "h": 7.16, "label": "QR code Facebook — agrandir / télécharger", "qr": "assets/qr/qr23-5.png"}
  ],
  15:[
   {"x": 0.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Bangkok et environs — 7 jours", "panel": "links"},
@@ -258,17 +312,31 @@ function drawHotspots(){
   if(h.href){e.href=h.href;e.target='_blank';e.rel='noopener sponsored';}
   else if(h.page){e.onclick=()=>go(h.page);}
   else if(h.panel){e.onclick=()=>show(h.panel);}
+  else if(h.qr){e.onclick=()=>openQrZoom(h.qr,h.label);}
   v.appendChild(e);
  });
 }
 let editMode=false;
-function openZoom(){document.getElementById('lbImage').src=document.getElementById('pageImage').src;const lb=document.getElementById('lightbox');lb.classList.add('open');lb.scrollTop=0;lb.scrollLeft=(lb.scrollWidth-lb.clientWidth)/2;document.body.style.overflow='hidden';}
+function openZoom(){
+ const img=document.getElementById('lbImage');img.src=document.getElementById('pageImage').src;img.classList.remove('qrMode');
+ document.getElementById('lbHint').textContent='Pincez ou faites défiler pour lire — touchez ✕ pour fermer';
+ document.getElementById('lbDownload').style.display='none';
+ const lb=document.getElementById('lightbox');lb.classList.add('open');lb.scrollTop=0;lb.scrollLeft=(lb.scrollWidth-lb.clientWidth)/2;document.body.style.overflow='hidden';
+}
+function openQrZoom(src,label){
+ const short=label.replace(/\s*—.*$/,'');
+ const img=document.getElementById('lbImage');img.src=src;img.classList.add('qrMode');
+ document.getElementById('lbHint').textContent='📱 '+short;
+ const dl=document.getElementById('lbDownload');
+ dl.href=src;dl.download=short.replace(/[^a-z0-9]+/gi,'-').replace(/(^-|-$)/g,'')+'.png';dl.style.display='inline-block';
+ const lb=document.getElementById('lightbox');lb.classList.add('open');lb.scrollTop=0;lb.scrollLeft=0;document.body.style.overflow='hidden';
+}
 function closeZoom(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}
 window.addEventListener('keydown',e=>{if(e.key==='Escape')closeZoom();});
 const state=JSON.parse(localStorage.getItem('tm-state')||'{}');
-function go(n){page=Math.max(1,Math.min(21,n));render();window.scrollTo({top:0,behavior:'smooth'});}
+function go(n){page=Math.max(1,Math.min(23,n));render();window.scrollTo({top:0,behavior:'smooth'});}
 function render(){
- document.getElementById('counter').textContent=page+' / 21';
+ document.getElementById('counter').textContent=page+' / 23';
  document.getElementById('pageImage').src='assets/page-'+String(page).padStart(2,'0')+'.webp';
  document.getElementById('pageImage').alt=titles[page-1];
  drawHotspots();
@@ -277,13 +345,55 @@ function render(){
   const im=document.createElement('img');im.src='assets/thumbs/thumb-'+String(i+1).padStart(2,'0')+'.webp';im.alt='';im.loading='lazy';im.decoding='async';
   const sm=document.createElement('small');sm.textContent=(i+1)+' — '+t;b.append(im,sm);side.appendChild(b);});}
  [...side.children].forEach((b,i)=>b.className='thumb '+(i+1===page?'active':''));
+ updateSummaryActive();
 }
 function show(id){document.querySelectorAll('.panel').forEach(x=>x.classList.remove('show'));document.getElementById(id).classList.add('show');document.getElementById(id).scrollIntoView({behavior:'smooth'});}
-function toggleFavorite(){let a=JSON.parse(localStorage.getItem('tm-favs')||'[]');if(a.includes(page))a=a.filter(x=>x!==page);else a.push(page);localStorage.setItem('tm-favs',JSON.stringify(a));buildFav();}
-function buildSummary(){let s=document.getElementById('summaryLinks');titles.forEach((t,i)=>{let b=document.createElement('button');b.className='bottom light';b.textContent=(i+1)+' — '+t;b.onclick=()=>go(i+1);s.appendChild(b);});}
+function toggleFavorite(){let a=JSON.parse(localStorage.getItem('tm-favs')||'[]');if(a.includes(page))a=a.filter(x=>x!==page);else a.push(page);localStorage.setItem('tm-favs',JSON.stringify(a));buildFav();updateSummaryFavs();}
+const SUMMARY_GROUPS=[
+ {emoji:'🧳',label:'Avant de partir',pages:[1,2,3,4,5,18]},
+ {emoji:'🗺️',label:'Destinations & itinéraires',pages:[6,7,9,15,19]},
+ {emoji:'🎒',label:'Infos pratiques au quotidien',pages:[8,10,11,12,13,14,16,21]},
+ {emoji:'🏮',label:'Culture & traditions',pages:[17]},
+ {emoji:'🎉',label:'Prêt à partir',pages:[20,22,23]}
+];
+function buildSummary(){
+ let s=document.getElementById('summaryLinks');s.innerHTML='';
+ const favs=JSON.parse(localStorage.getItem('tm-favs')||'[]');
+ SUMMARY_GROUPS.forEach(g=>{
+  const grp=document.createElement('div');grp.className='sumGrp';
+  const h=document.createElement('h3');h.textContent=g.emoji+' '+g.label;grp.appendChild(h);
+  const grid=document.createElement('div');grid.className='sumGrid';
+  g.pages.forEach(n=>{
+   const t=titles[n-1];
+   const b=document.createElement('button');b.className='sumCard'+(n===page?' active':'');b.dataset.title=t.toLowerCase();b.dataset.page=n;
+   b.onclick=()=>go(n);
+   b.innerHTML='<span class="sumThumbWrap"><img src="assets/thumbs/thumb-'+String(n).padStart(2,'0')+'.webp" alt="" loading="lazy"><span class="sumNum">'+n+'</span>'+(favs.includes(n)?'<span class="sumFav">♥</span>':'')+'</span><span class="sumTitle">'+t+'</span>';
+   grid.appendChild(b);
+  });
+  grp.appendChild(grid);s.appendChild(grp);
+ });
+}
+function updateSummaryActive(){document.querySelectorAll('.sumCard').forEach(c=>c.classList.toggle('active',+c.dataset.page===page));}
+function updateSummaryFavs(){
+ const favs=JSON.parse(localStorage.getItem('tm-favs')||'[]');
+ document.querySelectorAll('.sumCard').forEach(c=>{
+  const n=+c.dataset.page,wrap=c.querySelector('.sumThumbWrap');let f=wrap.querySelector('.sumFav');
+  if(favs.includes(n)){if(!f){f=document.createElement('span');f.className='sumFav';f.textContent='♥';wrap.appendChild(f);}}
+  else if(f){f.remove();}
+ });
+}
+function filterSummary(){
+ const q=document.getElementById('summarySearch').value.trim().toLowerCase();
+ document.querySelectorAll('.sumCard').forEach(c=>{c.style.display=c.dataset.title.includes(q)?'':'none';});
+ document.querySelectorAll('.sumGrp').forEach(g=>{
+  const any=[...g.querySelectorAll('.sumCard')].some(c=>c.style.display!=='none');
+  g.style.display=any?'':'none';
+ });
+}
 function buildFav(){let f=document.getElementById('favList');let a=JSON.parse(localStorage.getItem('tm-favs')||'[]');f.innerHTML=a.length?'':'Aucun favori pour le moment.';a.forEach(n=>{let b=document.createElement('button');b.className='bottom light';b.textContent=n+' — '+titles[n-1];b.onclick=()=>go(n);f.appendChild(b);});}
+function buildPrintAll(){const p=document.getElementById('printAll');titles.forEach((t,i)=>{const im=document.createElement('img');im.src='assets/page-'+String(i+1).padStart(2,'0')+'.webp';im.alt=t;p.appendChild(im);});}
 document.querySelectorAll('input[type=checkbox]').forEach(c=>{c.checked=!!state[c.dataset.k];c.onchange=()=>{state[c.dataset.k]=c.checked;localStorage.setItem('tm-state',JSON.stringify(state));};});
-buildSummary();buildFav();render();initEdit();
+buildSummary();buildFav();buildPrintAll();render();initEdit();
 
 function initEdit(){
  if(!/[?&]edit/.test(location.search))return;
@@ -308,7 +418,7 @@ function initEdit(){
   if(!st)return;const p=pos(e);box.remove();
   const h={x:+Math.min(st.x,p.x).toFixed(2),y:+Math.min(st.y,p.y).toFixed(2),w:+Math.abs(p.x-st.x).toFixed(2),h:+Math.abs(p.y-st.y).toFixed(2)};st=null;
   if(h.w<1||h.h<1)return;
-  const t=(prompt('Où doit mener cette zone ?\nColle un lien (https://…), ou tape un numéro de page (1 à 21), ou panel:checklist / panel:book / panel:film / panel:links')||'').trim();
+  const t=(prompt('Où doit mener cette zone ?\nColle un lien (https://…), ou tape un numéro de page (1 à 23), ou panel:checklist / panel:book / panel:film / panel:links')||'').trim();
   if(!t)return;
   h.label=prompt('Nom de la zone (ex. Booking) :','')||'Lien';
   if(/^\d+$/.test(t))h.page=+t;else if(t.startsWith('panel:'))h.panel=t.slice(6);else h.href=/^https?:/.test(t)?t:'https://'+t;

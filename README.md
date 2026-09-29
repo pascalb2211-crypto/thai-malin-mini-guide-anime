@@ -106,3 +106,33 @@ Adaptations techniques pour passer à 21 pages : compteur d'en-tête (« 1 / 20 
 Vérifié : balayage complet des 21 pages en navigateur headless = zéro erreur JS/réseau, 21 vignettes générées, compteur correct sur chaque page, navigation bloquée au-delà de la page 21 ; alignement pixel-perfect des 6 hotspots confirmé par capture avec surbrillance rouge.
 
 🎉🎉 GUIDE COMPLET : 21/21 pages réelles, tous les 5 sujets fantômes du plan initial sont maintenant comblés (Se loger, Se déplacer, Manger, Shopping & Souvenirs, Numéros utiles & SOS). Chaque remplacement a aussi permis de corriger les anciens renvois devenus obsolètes ailleurs dans le guide.
+
+Fix export PDF : le bouton "↓ PDF" faisait un simple window.print() de l'écran affiché (en-tête + colonne de vignettes + UNE seule page ouverte), donc seulement 1-2 pages physiques apparaissaient dans l'impression au lieu des 21 pages du guide. Corrigé : un conteneur caché #printAll est généré au chargement avec les 21 images du guide dans l'ordre ; en mode impression (@media print), toute l'interface (en-tête, vignettes, panneaux) est masquée et seul ce conteneur s'affiche, une image par page PDF (page-break-after + object-fit:contain pour que chaque page tienne entière sans recadrage ni déformation).
+Vérifié : export PDF headless testé → exactement 21 pages générées, contenu identique à chaque page du site, rien de recadré. Navigation et hotspots non affectés (le conteneur d'impression est invisible à l'écran, seulement actif au moment de l'impression/export PDF).
+
+Sommaire rendu interactif : remplacement de la simple liste de boutons texte par une grille de cartes visuelles (vignette de chaque page, badge numéroté, titre), regroupées en 5 sections thématiques (🧳 Avant de partir, 🗺️ Destinations & itinéraires, 🎒 Infos pratiques au quotidien, 🏮 Culture & traditions, 🎉 Prêt à partir). Ajouts :
+- Barre de recherche en haut du sommaire pour filtrer les 21 pages par mot-clé (ex. « visa », « manger », « shopping ») — masque aussi les sections vides.
+- La carte de la page actuellement affichée est mise en évidence (contour rose).
+- Un cœur ♥ apparaît sur la vignette des pages ajoutées aux favoris, mis à jour en direct.
+- Responsive : grille à 3 colonnes sur mobile, plus large sur desktop.
+Vérifié : les 21 pages sont représentées une seule fois chacune (aucun doublon, aucun oubli) ; navigation, recherche et favoris testés en navigateur headless ; balayage complet des 21 pages = zéro erreur JS/réseau.
+
+🆕 Pascal ajoute une page 22 : « Mon centre de réservation » (hub final avec les liens de réservation). Ajustement anticipé du flux de clôture : page 20 « Et maintenant… à vous ! » ne boucle plus directement vers la page 1, elle mène maintenant vers la page 21 (Numéros utiles & SOS), comme dernier rappel pratique avant le départ. Une fois la page 22 intégrée, la chaîne de clôture sera complète : 20 (adieu) → 21 (SOS) → 22 (centre de réservation, vrai point final qui bouclera vers la page 1 ou thaimalin.fr).
+
+🆕 NOUVELLE PAGE 22 AJOUTÉE : « Mon Centre de Réservation » (le guide passe de 21 à 22 pages). 6 partenaires avec QR code : Vols et séjours (Trip.com), Hébergements (Agoda), Excursions & Activités (GetYourGuide/Klook), Transports (12Go), Cartes SIM & eSIM (Airalo/Holafly), Assurance voyage (SafetyWing).
+Fonctionnalités spécifiques à cette page :
+- Chaque grande carte est cliquable vers le lien affilié correspondant déjà utilisé ailleurs dans le guide (Trip.com, GetYourGuide, 12Go, Airalo, SafetyWing) ; Hébergements (Agoda, pas de lien affilié existant) → panneau Liens utiles.
+- Chaque QR code a été découpé individuellement en image nette (assets/qr/qr22-1.png à qr22-6.png, upscalées ×3 pour rester bien lisibles) et possède sa propre zone cliquable superposée précisément dessus.
+- Cliquer sur un QR code ouvre une vue plein écran agrandie (jusqu'à 420px, bien plus lisible pour scanner à l'écran) avec un bouton « 📥 Télécharger le QR code » qui enregistre l'image PNG du QR sur l'appareil.
+- Le zoom classique (🔍 Agrandir / clic sur l'image) continue de fonctionner normalement sur cette page pour voir toute la page en grand.
+Flux de clôture complété : page 20 (adieu) → page 21 (Numéros utiles & SOS, via le bouton « Et maintenant… à vous ! ») → page 22 (Centre de réservation, vrai point final du guide, accessible aussi via la flèche → depuis la page 21).
+Adaptations techniques pour passer à 22 pages : compteur, fonction `go()`, outil d'édition (plage 1 à 22). Sommaire, vignettes et export PDF se génèrent dynamiquement à partir de `titles`, aucune autre adaptation nécessaire.
+Vérifié : balayage complet des 22 pages en navigateur headless = zéro erreur JS/réseau ; alignement pixel-perfect des 6 cartes ET des 6 zones QR (superposées avec précision, testé par capture avec surbrillance rouge) ; zoom QR + téléchargement testés individuellement (source, nom de fichier, affichage du bouton) ; le zoom classique reste inchangé sur les autres pages.
+
+🆕 NOUVELLE PAGE 23 AJOUTÉE (finale) : « FIN — Merci ! » — vraie page de clôture envoyée par Pascal (badge « Merci ! » au lieu d'un numéro). Layout différent des autres pages : grille 3 colonnes × 2 lignes.
+6 cartes : Mini-guide Thaïlande (→ boucle vers la page 1, ce guide-ci), Mini-guide Vietnam (→ Liens utiles, pas de lien externe connu), Mini-guide Bali (→ Liens utiles), Newsletter Thaï Malin (→ thaimalin.fr), Facebook Thaï Malin (→ Liens utiles, pas de lien confirmé), Application Thaï Malin (→ Liens utiles).
+5 des 6 cartes ont un QR code (la carte Application n'en a pas, juste une maquette du téléphone) — chaque QR a été découpé individuellement (assets/qr/qr23-1.png à qr23-5.png) avec sa propre zone cliquable superposée précisément dessus, ouvrant la vue zoomée + bouton de téléchargement (même fonctionnalité que la page 22).
+Adaptations techniques pour passer à 23 pages : compteur, fonction `go()`, outil d'édition (plage 1 à 23). Sommaire, vignettes et export PDF se génèrent dynamiquement, aucune autre adaptation nécessaire.
+Vérifié : balayage complet des 23 pages en navigateur headless = zéro erreur JS/réseau ; alignement pixel-perfect des 6 cartes ET des 5 zones QR (grille 3×2, différente du gabarit habituel 2×3, testé par capture avec surbrillance rouge) ; zoom QR + téléchargement testés.
+
+🎉🎉🎉 GUIDE FINAL : 23/23 pages réelles. Flux de clôture complet : page 20 (adieu) → page 21 (SOS) → page 22 (centre de réservation) → page 23 (FIN — découvrez mes autres mini-guides, newsletter, Facebook, application). Chaque page de clôture mène naturellement à la suivante via la flèche →, la vraie fin du guide est maintenant la page 23.

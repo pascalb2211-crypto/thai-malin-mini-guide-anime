@@ -67,3 +67,5 @@ Page 19 intégrée : « Excursions & Activités » — enfin le bon sujet, logo 
 🎉 GUIDE COMPLET : 20/20 pages réelles intégrées, testées et vérifiées (dimensions, texte, hotspots, alignement pixel-perfect, zéro erreur JS/réseau sur l'ensemble des 20 pages).
 
 Note : les dossiers _reserved/ et _pending/ contiennent des visuels reçus en trop ou obsolètes pendant la construction (3 visuels de clôture redondants avec la page 20, remplacés par les vraies pages 18/19 corrigées). Ils ne sont pas utilisés par le site et peuvent être supprimés sans impact.
+
+Fix mobile : les vignettes de la barre du haut étaient trop grosses sur téléphone (100px + texte sous chaque image, prenant beaucoup de hauteur d'écran). Réduites à 52px, texte masqué sur mobile (déjà visible via le numéro de page en haut).

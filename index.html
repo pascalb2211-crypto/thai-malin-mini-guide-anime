@@ -1,67 +1,131 @@
 <!doctype html>
 <html lang="fr"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#062554">
+<meta name="description" content="Thaï Malin — le mini-guide pour les Réunionnais qui partent en Thaïlande : documents, TDAC, visa, eSIM, argent, itinéraires et bons plans.">
 <title>Thaï Malin — Mini-guide Réunionnais</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#edf4f3;color:#17323e;font-family:Arial,sans-serif}
-header{position:sticky;top:0;z-index:20;background:#062554;color:#fff}.top{height:58px;display:flex;align-items:center;gap:10px;padding:7px 14px}
-.brand{font-size:20px;font-weight:900}.brand span{color:#ff4778}.title{flex:1;font-weight:800}.counter{font-weight:900}
-button{cursor:pointer;border:0}.nav,.tool{background:#ffffff20;color:#fff;border-radius:10px;padding:9px 12px;font-weight:900}
-.layout{display:grid;grid-template-columns:145px 1fr;max-width:1500px;margin:auto}.side{background:#fff;padding:8px;max-height:calc(100vh - 58px);overflow:auto}
-.thumb{width:100%;background:#fff;border:2px solid transparent;border-radius:9px;padding:3px;margin-bottom:7px;text-align:left;font-weight:800}.thumb.active{border-color:#1676d2}.thumb img{width:100%;display:block;border-radius:6px}.thumb small{font-size:10px}
-main{padding:12px}.viewer{position:relative;max-width:1400px;margin:auto;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 12px 35px #17323e22}.viewer img{width:100%;display:block}
-.hotspot{position:absolute;display:block;border:0;background:transparent;border-radius:10px;cursor:pointer}.hotspot:focus-visible{outline:3px solid #ff4778}.hotspot:hover{background:#1676d220;outline:2px solid #fff}
-.bottom{max-width:1400px;margin:10px auto;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}.bottom button{padding:10px 14px;border-radius:10px;font-weight:900}
-.primary{background:#1676d2;color:#fff}.pink{background:#ed4775;color:#fff}.green{background:#1fa66b;color:#fff}.orange{background:#f07b22;color:#fff}.light{background:#fff;color:#17323e}
-.panel{max-width:1400px;margin:10px auto;background:#fff;border:1px solid #d8e5e2;border-radius:16px;padding:14px;display:none}.panel.show{display:block}
-.links{display:flex;flex-wrap:wrap;gap:8px}.btn{padding:10px 13px;border-radius:10px;color:#fff;text-decoration:none;font-weight:900}
-.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}.check{padding:9px;border:1px solid #dce6e4;border-radius:10px;font-weight:800;background:#f7faf9}.check input{width:19px;height:19px;vertical-align:middle;margin-right:7px;accent-color:#1fa66b}
-@media(max-width:800px){.top{height:auto;flex-wrap:wrap;gap:6px}.brand{font-size:17px;white-space:nowrap}.counter{white-space:nowrap}.tool{padding:7px 9px;font-size:13px}.side{max-height:none}.layout{grid-template-columns:1fr}.side{display:flex;overflow-x:auto;max-height:none}.thumb{min-width:100px}.title{display:none}.checks{grid-template-columns:1fr}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:#edf4f3;color:#17323e;font-family:Arial,sans-serif}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+header{position:sticky;top:0;z-index:20;background:#062554;color:#fff;padding-top:env(safe-area-inset-top)}
+.top{min-height:58px;display:flex;align-items:center;gap:10px;padding:7px 14px}
+.brand{font-size:20px;font-weight:900;white-space:nowrap}.brand span{color:#ff4778}
+.title{flex:1;font-weight:800}.counter{font-weight:900;white-space:nowrap;min-width:52px;text-align:center}
+button{cursor:pointer;border:0;font-family:inherit}
+.nav,.tool{background:#ffffff20;color:#fff;border-radius:10px;padding:9px 12px;font-weight:900;font-size:15px}
+.nav:active,.tool:active{background:#ffffff40}
+.navgrp{display:flex;align-items:center;gap:6px}
+.layout{display:grid;grid-template-columns:145px 1fr;max-width:1500px;margin:auto}
+.side{background:#fff;padding:8px;max-height:calc(100vh - 58px);overflow:auto;position:sticky;top:58px;align-self:start}
+.thumb{width:100%;background:#fff;border:2px solid transparent;border-radius:9px;padding:3px;margin-bottom:7px;text-align:left;font-weight:800;color:#17323e}
+.thumb.active{border-color:#1676d2}.thumb img{width:100%;display:block;border-radius:6px}.thumb small{font-size:10px;display:block;margin-top:2px}
+main{padding:12px;min-width:0}
 
+/* Visionneuse : .stage porte l'image ET les zones cliquables (en %), donc le zoom garde tout aligné */
+.viewer{position:relative;max-width:1400px;margin:auto;background:#fff;border-radius:16px;overflow:auto;box-shadow:0 12px 35px #17323e22;touch-action:pan-y pinch-zoom;-webkit-overflow-scrolling:touch}
+.stage{position:relative;width:100%;line-height:0}
+.viewer.zoom .stage{width:230%}
+.stage img{width:100%;height:auto;display:block;user-select:none;-webkit-user-drag:none;opacity:1;transition:opacity .25s}
+.stage img.loading{opacity:.25}
+.stage.in-next{animation:inNext .32s ease-out}.stage.in-prev{animation:inPrev .32s ease-out}
+@keyframes inNext{from{opacity:0;transform:translateX(5%)}to{opacity:1;transform:none}}
+@keyframes inPrev{from{opacity:0;transform:translateX(-5%)}to{opacity:1;transform:none}}
+
+.hotspot{position:absolute;display:block;border:0;background:transparent;border-radius:10px;cursor:pointer}
+.hotspot:focus-visible{outline:3px solid #ff4778}
 .hotspot:hover{background:#ffffff33;outline:3px solid #fff;box-shadow:0 0 0 3px #ff4778,0 8px 22px #0006}
+/* petite pulsation pour montrer que les vignettes sont cliquables */
+.hotspot.hint{animation:pulse 2.4s ease-in-out 3}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 #ff477800}50%{box-shadow:0 0 0 4px #ff4778aa}}
+
+.bottom{max-width:1400px;margin:10px auto;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.bottom button{padding:10px 14px;border-radius:10px;font-weight:900;font-size:14px}
+.primary{background:#1676d2;color:#fff}.pink{background:#ed4775;color:#fff}.green{background:#1fa66b;color:#fff}.orange{background:#f07b22;color:#fff}.light{background:#fff;color:#17323e}
+.soon{font-size:10px;background:#ffffff40;border-radius:20px;padding:2px 7px;margin-left:5px;vertical-align:middle}
+.swipehint{display:none;text-align:center;font-size:12px;color:#5b7480;margin:6px 0 0}
+
+/* Panneaux : fenêtre par-dessus la page (plus besoin de défiler tout en bas) */
+.panel{display:none;position:fixed;inset:0;z-index:40;background:#062554d0;overflow:auto;padding:max(16px,env(safe-area-inset-top)) 12px 24px}
+.panel.show{display:block}
+.card{position:relative;max-width:760px;margin:0 auto;background:#fff;border-radius:16px;padding:16px 16px 18px}
+.card h2{margin:0 40px 12px 0;font-size:20px}
+.close{position:absolute;top:10px;right:10px;width:38px;height:38px;border-radius:50%;background:#edf4f3;color:#17323e;font-size:20px;font-weight:900}
+.links{display:flex;flex-wrap:wrap;gap:8px}.btn{padding:10px 13px;border-radius:10px;color:#fff;text-decoration:none;font-weight:900}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.check{padding:9px;border:1px solid #dce6e4;border-radius:10px;font-weight:800;background:#f7faf9}
+.check input{width:19px;height:19px;vertical-align:middle;margin-right:7px;accent-color:#1fa66b}
+.progress{height:8px;background:#dce6e4;border-radius:8px;overflow:hidden;margin:0 0 12px}.progress i{display:block;height:100%;width:0;background:#1fa66b;transition:width .3s}
+#summaryLinks button,#favList button{padding:10px 14px;border-radius:10px;font-weight:800;background:#edf4f3;color:#17323e;text-align:left}
+
+@media(max-width:800px){
+ .top{gap:6px;padding:6px 10px;min-height:52px;flex-wrap:nowrap}
+ .brand{font-size:15px}.title{display:none}.top{justify-content:space-between}
+ .nav,.tool{padding:8px 10px;font-size:15px}
+ .lbl,.tool.desk{display:none}
+ .layout{grid-template-columns:1fr}
+ .side{display:none} /* la bande de miniatures cède la place au Sommaire */
+ main{padding:8px}
+ .viewer{border-radius:12px}
+ .viewer.zoom .stage{width:260%}
+ .checks{grid-template-columns:1fr}
+ .swipehint{display:block}
+ .bottom button{flex:1 1 44%}
+}
+@media(prefers-reduced-motion:reduce){.stage.in-next,.stage.in-prev,.hotspot.hint{animation:none}}
+@media print{header,.side,.bottom,.panel,.swipehint{display:none!important}.viewer{box-shadow:none}}
+
 .editing .hotspot{pointer-events:none;outline:2px dashed #ff4778;background:#ff477822}
 .drawbox{position:absolute;border:2px dashed #ff4778;background:#ff477833;pointer-events:none}
-#editpanel{position:fixed;right:12px;bottom:12px;width:min(420px,92vw);background:#062554;color:#fff;border-radius:14px;padding:12px;z-index:50;box-shadow:0 10px 30px #0008;font-size:13px}
+#editpanel{position:fixed;right:12px;bottom:12px;width:min(420px,92vw);background:#062554;color:#fff;border-radius:14px;padding:12px;z-index:60;box-shadow:0 10px 30px #0008;font-size:13px}
 #editpanel textarea{width:100%;height:150px;font:12px monospace;border-radius:8px;border:0;padding:6px}
 #editpanel button{margin:6px 6px 0 0;padding:8px 12px;border-radius:8px;font-weight:900}
 </style></head><body>
 <header><div class="top">
 <div class="brand">🌺 THAÏ <span>MALIN</span></div><div class="title">Mini-guide Réunionnais</div>
-<button class="nav" onclick="go(page-1)">←</button><div class="counter" id="counter">1 / 20</div><button class="nav" onclick="go(page+1)">→</button>
-<button class="tool" onclick="show('summary')">☷ Sommaire</button><button class="tool" onclick="window.print()">↓ PDF</button>
-<button class="tool" onclick="show('favorites')">♡ Favoris</button><button class="tool" onclick="document.documentElement.requestFullscreen?.()">⛶</button>
+<div class="navgrp"><button class="nav" onclick="go(page-1)" aria-label="Page précédente">←</button><div class="counter" id="counter" aria-live="polite">1 / 20</div><button class="nav" onclick="go(page+1)" aria-label="Page suivante">→</button></div>
+<div class="navgrp">
+<button class="tool" onclick="show('summary')" aria-label="Sommaire">☷<span class="lbl"> Sommaire</span></button>
+<button class="tool" onclick="window.print()" aria-label="Télécharger en PDF">↓<span class="lbl"> PDF</span></button>
+<button class="tool" onclick="show('favorites')" aria-label="Mes favoris">♡<span class="lbl"> Favoris</span></button>
+<button class="tool desk" onclick="document.documentElement.requestFullscreen?.()" aria-label="Plein écran">⛶</button>
+</div>
 </div></header>
-<div class="layout"><aside class="side" id="side"></aside><main>
-<div class="viewer" id="viewer"><img id="pageImage" alt=""></div>
+<h1 class="sr">Thaï Malin — Mini-guide Réunionnais pour préparer son voyage en Thaïlande</h1>
+<div class="layout"><aside class="side" id="side" aria-label="Pages du guide"></aside><main>
+<div class="viewer" id="viewer"><div class="stage" id="stage"><img id="pageImage" alt=""></div></div>
+<p class="swipehint">👆 Glisse à gauche ou à droite pour changer de page · 🔍 Zoom pour lire les petits textes</p>
 <div class="bottom">
+<button class="primary" onclick="toggleZoom()" id="zoomBtn">🔍 Zoom</button>
 <button class="primary" onclick="show('links')">🔗 Liens utiles</button>
 <button class="pink" onclick="show('checklist')">☑️ Ma checklist</button>
-<button class="green" onclick="show('book')">📖 Mon livre</button>
-<button class="orange" onclick="show('film')">🎬 Mon film IA</button>
-<button class="light" onclick="toggleFavorite()">♡ Ajouter aux favoris</button>
+<button class="green" onclick="show('book')">📖 Mon livre<span class="soon">bientôt</span></button>
+<button class="orange" onclick="show('film')">🎬 Mon film IA<span class="soon">bientôt</span></button>
+<button class="light" onclick="toggleFavorite()" id="favBtn">♡ Ajouter aux favoris</button>
 </div>
-<section class="panel" id="summary"><h2>📋 Sommaire</h2><div class="links" id="summaryLinks"></div></section>
-<section class="panel" id="favorites"><h2>❤️ Mes favoris</h2><div id="favList"></div></section>
-<section class="panel" id="links"><h2>🔗 Liens utiles</h2><div class="links">
-<a class="btn primary" target="_blank" href="https://tdac.immigration.go.th">TDAC officiel</a>
-<a class="btn primary" target="_blank" href="https://www.diplomatie.gouv.fr/fr/information-par-pays/thailande/conseils-aux-voyageurs-entree-sejour">France Diplomatie</a>
-<a class="btn green" target="_blank" href="https://www.trip.com/?Allianceid=9852508&SID=327644129&trip_sub1=&trip_sub3=D19106369">Trip.com</a>
-<a class="btn orange" target="_blank" href="https://gyg.me/qSQwVEug">GetYourGuide</a>
-<a class="btn green" target="_blank" href="https://12go.asia/?z=16569415">12Go</a>
-<a class="btn primary" target="_blank" href="https://safetywing.com/nomad-insurance?referenceID=26576610&campaign=thai-malin&utm_campaign=thai-malin&utm_source=26576610&utm_medium=Ambassador">SafetyWing</a>
-<a class="btn" style="background:#673ab7" target="_blank" href="https://airalo.pxf.io/PzWeQQ">Airalo</a>
-</div></section>
-<section class="panel" id="checklist"><h2>☑️ Ma checklist</h2><div class="checks">
+<section class="panel" id="summary"><div class="card"><h2>📋 Sommaire</h2><div class="links" id="summaryLinks"></div></div></section>
+<section class="panel" id="favorites"><div class="card"><h2>❤️ Mes favoris</h2><div class="links" id="favList"></div></div></section>
+<section class="panel" id="links"><div class="card"><h2>🔗 Liens utiles</h2><div class="links">
+<a class="btn primary" target="_blank" rel="noopener" href="https://tdac.immigration.go.th">TDAC officiel</a>
+<a class="btn primary" target="_blank" rel="noopener" href="https://www.diplomatie.gouv.fr/fr/information-par-pays/thailande/conseils-aux-voyageurs-entree-sejour">France Diplomatie</a>
+<a class="btn green" target="_blank" rel="noopener sponsored" href="https://www.trip.com/?Allianceid=9852508&SID=327644129&trip_sub1=&trip_sub3=D19106369">Trip.com</a>
+<a class="btn orange" target="_blank" rel="noopener sponsored" href="https://gyg.me/qSQwVEug">GetYourGuide</a>
+<a class="btn green" target="_blank" rel="noopener sponsored" href="https://12go.asia/?z=16569415">12Go</a>
+<a class="btn primary" target="_blank" rel="noopener sponsored" href="https://safetywing.com/nomad-insurance?referenceID=26576610&campaign=thai-malin&utm_campaign=thai-malin&utm_source=26576610&utm_medium=Ambassador">SafetyWing</a>
+<a class="btn" style="background:#673ab7" target="_blank" rel="noopener sponsored" href="https://airalo.pxf.io/PzWeQQ">Airalo</a>
+</div></div></section>
+<section class="panel" id="checklist"><div class="card"><h2>☑️ Ma checklist</h2><div class="progress"><i id="prog"></i></div><div class="checks">
 <label class="check"><input type="checkbox" data-k="passport">Passeport</label><label class="check"><input type="checkbox" data-k="tdac">TDAC</label>
 <label class="check"><input type="checkbox" data-k="tickets">Billets</label><label class="check"><input type="checkbox" data-k="hotel">Hébergement</label>
 <label class="check"><input type="checkbox" data-k="insurance">Assurance</label><label class="check"><input type="checkbox" data-k="esim">eSIM</label>
 <label class="check"><input type="checkbox" data-k="copies">Copies numériques</label><label class="check"><input type="checkbox" data-k="money">Argent</label>
-</div></section>
-<section class="panel" id="book"><h2>📖 Mon livre de voyage</h2><p>Interface prête pour créer le livre illustré personnalisé.</p></section>
-<section class="panel" id="film"><h2>🎬 Mon film de voyage IA</h2><p>Interface prête pour transformer le livre en petit film animé personnalisé.</p></section>
+</div></div></section>
+<section class="panel" id="book"><div class="card"><h2>📖 Mon livre de voyage</h2><p>Bientôt disponible : tu pourras créer ton livre illustré personnalisé.</p></div></section>
+<section class="panel" id="film"><div class="card"><h2>🎬 Mon film de voyage IA</h2><p>Bientôt disponible : ton livre transformé en petit film animé personnalisé.</p></div></section>
 </main></div>
 <script>
 const titles=["Bienvenue en Thaïlande", "Avant de partir", "Documents & TDAC", "Visa & Entrée en Thaïlande", "Vols & Réservations", "Assurance voyage", "eSIM & Internet", "Mon argent en Thaïlande", "Ma valise", "Arrivée en Thaïlande", "Se déplacer en Thaïlande", "Se loger", "Manger en Thaïlande", "Visiter les incontournables", "Itinéraires recommandés", "Conseils pratiques au quotidien", "Culture & Traditions", "Shopping & Souvenirs", "Idées d’excursions et activités", "Numéros utiles & SOS"];
+const N=titles.length;
 let page=1;
 const HOTSPOTS={
  // x,y,w,h en % de l'image (restent alignés à toutes les tailles). Cible : href (lien externe) | page (n° de page) | panel (id du panneau)
@@ -79,10 +143,18 @@ const HOTSPOTS={
   {"x": 85.71, "y": 90.96, "w": 13.84, "h": 7.25, "label": "Airalo", "href": "https://airalo.pxf.io/PzWeQQ"}
  ]
 };
+const $=id=>document.getElementById(id);
+const pad=n=>String(n).padStart(2,'0');
+const src=n=>'assets/page-'+pad(n)+'.webp';
+const read=(k,d)=>{try{return JSON.parse(localStorage.getItem(k)||d)}catch(e){return JSON.parse(d)}};
+const write=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+const state=read('tm-state','{}');
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
 function drawHotspots(){
- const v=document.getElementById('viewer');v.querySelectorAll('.hotspot').forEach(e=>e.remove());
+ const v=$('stage');v.querySelectorAll('.hotspot').forEach(e=>e.remove());
  (HOTSPOTS[page]||[]).forEach(h=>{
-  const e=document.createElement(h.href?'a':'button');e.className='hotspot';
+  const e=document.createElement(h.href?'a':'button');e.className='hotspot'+(page===1&&!reduce?' hint':'');
   e.style.cssText='left:'+h.x+'%;top:'+h.y+'%;width:'+h.w+'%;height:'+h.h+'%';
   e.setAttribute('aria-label',h.label);e.title=h.label;
   if(h.href){e.href=h.href;e.target='_blank';e.rel='noopener sponsored';}
@@ -91,29 +163,66 @@ function drawHotspots(){
   v.appendChild(e);
  });
 }
-const state=JSON.parse(localStorage.getItem('tm-state')||'{}');
-function go(n){page=Math.max(1,Math.min(20,n));render();window.scrollTo({top:0,behavior:'smooth'});}
-function render(){
- document.getElementById('counter').textContent=page+' / 20';
- const img=document.getElementById('pageImage');
- img.src='assets/page-'+String(page).padStart(2,'0')+'.webp';img.alt=titles[page-1];
- drawHotspots();
- const side=document.getElementById('side');
- if(!side.children.length){titles.forEach((t,i)=>{let b=document.createElement('button');b.onclick=()=>go(i+1);
-  const im=document.createElement('img');im.src='assets/thumbs/thumb-'+String(i+1).padStart(2,'0')+'.webp';im.alt='';im.loading='lazy';im.decoding='async';
-  const sm=document.createElement('small');sm.textContent=(i+1)+' — '+t;b.append(im,sm);side.appendChild(b);});}
- [...side.children].forEach((b,i)=>b.className='thumb '+(i+1===page?'active':''));
+function hidePanels(){document.querySelectorAll('.panel').forEach(x=>x.classList.remove('show'));document.body.style.overflow='';}
+function go(n,noScroll){
+ const t=Math.max(1,Math.min(N,n));if(t===page&&$('pageImage').getAttribute('src'))return;
+ const dir=t>page?'in-next':'in-prev';page=t;hidePanels();
+ $('viewer').classList.remove('zoom');$('viewer').scrollLeft=0;
+ render();
+ const st=$('stage');st.classList.remove('in-next','in-prev');
+ if(!reduce){void st.offsetWidth;st.classList.add(dir);}
+ if(!noScroll)window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
 }
-function show(id){document.querySelectorAll('.panel').forEach(x=>x.classList.remove('show'));document.getElementById(id).classList.add('show');document.getElementById(id).scrollIntoView({behavior:'smooth'});}
-function toggleFavorite(){let a=JSON.parse(localStorage.getItem('tm-favs')||'[]');if(a.includes(page))a=a.filter(x=>x!==page);else a.push(page);localStorage.setItem('tm-favs',JSON.stringify(a));buildFav();}
-function buildSummary(){let s=document.getElementById('summaryLinks');titles.forEach((t,i)=>{let b=document.createElement('button');b.className='bottom light';b.textContent=(i+1)+' — '+t;b.onclick=()=>go(i+1);s.appendChild(b);});}
-function buildFav(){let f=document.getElementById('favList');let a=JSON.parse(localStorage.getItem('tm-favs')||'[]');f.innerHTML=a.length?'':'Aucun favori pour le moment.';a.forEach(n=>{let b=document.createElement('button');b.className='bottom light';b.textContent=n+' — '+titles[n-1];b.onclick=()=>go(n);f.appendChild(b);});}
-document.querySelectorAll('input[type=checkbox]').forEach(c=>{c.checked=!!state[c.dataset.k];c.onchange=()=>{state[c.dataset.k]=c.checked;localStorage.setItem('tm-state',JSON.stringify(state));};});
+function render(){
+ $('counter').textContent=page+' / '+N;
+ const img=$('pageImage');
+ img.classList.add('loading');img.onload=img.onerror=()=>img.classList.remove('loading');
+ img.src=src(page);img.alt=titles[page-1];document.title=titles[page-1]+' — Thaï Malin';
+ drawHotspots();
+ const side=$('side');
+ if(!side.children.length){titles.forEach((t,i)=>{let b=document.createElement('button');b.onclick=()=>go(i+1);
+  const im=document.createElement('img');im.src='assets/thumbs/thumb-'+pad(i+1)+'.webp';im.alt='';im.loading='lazy';im.decoding='async';
+  const sm=document.createElement('small');sm.textContent=(i+1)+' — '+t;b.append(im,sm);side.appendChild(b);});}
+ [...side.children].forEach((b,i)=>{b.className='thumb '+(i+1===page?'active':'');if(i+1===page&&innerWidth>800)b.scrollIntoView({block:'nearest'});});
+ [page-1,page+1].forEach(n=>{if(n>=1&&n<=N){const p=new Image();p.src=src(n);}});
+ updateFavBtn();
+}
+function show(id){hidePanels();$(id).classList.add('show');document.body.style.overflow='hidden';$(id).scrollTop=0;
+ if(id==='favorites')buildFav();}
+function toggleZoom(){const v=$('viewer');v.classList.toggle('zoom');$('zoomBtn').textContent=v.classList.contains('zoom')?'🔍 Dézoomer':'🔍 Zoom';if(!v.classList.contains('zoom'))v.scrollLeft=0;}
+function favs(){return read('tm-favs','[]');}
+function updateFavBtn(){const on=favs().includes(page);$('favBtn').textContent=(on?'♥ Dans mes favoris':'♡ Ajouter aux favoris');}
+function toggleFavorite(){let a=favs();a=a.includes(page)?a.filter(x=>x!==page):[...a,page];write('tm-favs',a);buildFav();updateFavBtn();}
+function buildSummary(){let s=$('summaryLinks');titles.forEach((t,i)=>{let b=document.createElement('button');b.textContent=(i+1)+' — '+t;b.onclick=()=>go(i+1);s.appendChild(b);});}
+function buildFav(){let f=$('favList');let a=favs().sort((x,y)=>x-y);f.textContent=a.length?'':'Aucun favori pour le moment.';a.forEach(n=>{let b=document.createElement('button');b.textContent=n+' — '+titles[n-1];b.onclick=()=>go(n);f.appendChild(b);});}
+function updateProgress(){const c=[...document.querySelectorAll('input[type=checkbox]')];$('prog').style.width=(c.filter(x=>x.checked).length/c.length*100)+'%';}
+document.querySelectorAll('input[type=checkbox]').forEach(c=>{c.checked=!!state[c.dataset.k];c.onchange=()=>{state[c.dataset.k]=c.checked;write('tm-state',state);updateProgress();};});
+updateProgress();
+// bouton fermer + clic sur le fond + Échap
+document.querySelectorAll('.panel').forEach(p=>{
+ const x=document.createElement('button');x.className='close';x.textContent='✕';x.setAttribute('aria-label','Fermer');x.onclick=hidePanels;p.firstElementChild.appendChild(x);
+ p.addEventListener('click',e=>{if(e.target===p)hidePanels();});
+});
+addEventListener('keydown',e=>{
+ if(e.target.matches('input,textarea'))return;
+ if(e.key==='Escape')hidePanels();
+ else if(e.key==='ArrowRight')go(page+1);else if(e.key==='ArrowLeft')go(page-1);
+});
+// glisser pour changer de page (désactivé quand on zoome)
+(function(){
+ const v=$('viewer');let sx=0,sy=0,t0=0,multi=false;
+ v.addEventListener('touchstart',e=>{multi=e.touches.length>1;sx=e.touches[0].clientX;sy=e.touches[0].clientY;t0=Date.now();},{passive:true});
+ v.addEventListener('touchend',e=>{
+  if(multi||v.classList.contains('zoom')||document.body.classList.contains('editing'))return;
+  const t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;
+  if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5&&Date.now()-t0<700)go(page+(dx<0?1:-1),true);
+ },{passive:true});
+})();
 
 function initEdit(){
  if(!/[?&]edit/.test(location.search))return;
  document.body.classList.add('editing');
- const v=document.getElementById('viewer'),img=document.getElementById('pageImage');
+ const v=$('stage'),img=$('pageImage');
  const panel=document.createElement('div');panel.id='editpanel';
  const info=document.createElement('div');info.textContent='Mode placement : trace un rectangle sur l’image avec la souris, puis indique où il mène. Copie ensuite le code ci-dessous.';
  const out=document.createElement('textarea');out.readOnly=true;

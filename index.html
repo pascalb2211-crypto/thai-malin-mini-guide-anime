@@ -62,20 +62,20 @@ main{padding:12px}.viewer{position:relative;max-width:1400px;margin:auto;backgro
 <section class="panel" id="film"><h2>🎬 Mon film de voyage IA</h2><p>Interface prête pour transformer le livre en petit film animé personnalisé.</p></section>
 </main></div>
 <script>
-const titles=["Bienvenue en Thaïlande", "Avant de partir", "Documents & TDAC", "Visa & Entrée en Thaïlande", "Vols & Réservations", "Assurance voyage", "eSIM & Internet", "Mon argent en Thaïlande", "Ma valise", "Arrivée en Thaïlande", "Se déplacer en Thaïlande", "Se loger", "Manger en Thaïlande", "Visiter les incontournables", "Itinéraires recommandés", "Conseils pratiques au quotidien", "Culture & Traditions", "Shopping & Souvenirs", "Idées d’excursions et activités", "Numéros utiles & SOS"];
+const titles=["Bienvenue en Thaïlande", "Avant de partir", "Documents & TDAC", "Visa & Entrée en Thaïlande", "À l’arrivée en Thaïlande", "Où aller en Thaïlande ?", "Itinéraires conseillés", "Conseils pratiques pour un séjour réussi", "À ne pas manquer en Thaïlande", "Le petit plus pour un séjour parfait", "Astuces et bons plans", "En résumé — Tout pour un séjour réussi", "Les erreurs à éviter", "Les petits plus pour une expérience inoubliable", "Itinéraires recommandés", "Conseils pratiques au quotidien", "Culture & Traditions", "Formalités & Entrée en Thaïlande", "Idées d’excursions et activités", "Prêt pour l’aventure ?"];
 let page=1;
 const HOTSPOTS={
  // x,y,w,h en % de l'image (restent alignés à toutes les tailles). Cible : href (lien externe) | page (n° de page) | panel (id du panneau)
  1:[
   {"x": 2.93, "y": 22.46, "w": 32.23, "h": 4.88, "label": "Plages", "page": 19},
   {"x": 2.93, "y": 29.3, "w": 32.23, "h": 4.23, "label": "Culture", "page": 17},
-  {"x": 2.93, "y": 34.83, "w": 32.23, "h": 4.23, "label": "Gastronomie", "page": 13},
+  {"x": 2.93, "y": 34.83, "w": 32.23, "h": 4.23, "label": "Gastronomie", "panel": "links"},
   {"x": 2.93, "y": 39.71, "w": 32.23, "h": 4.56, "label": "Bons plans", "page": 16},
   {"x": 2.93, "y": 85.94, "w": 13.87, "h": 11.72, "label": "Plages de rêve", "page": 19},
-  {"x": 16.8, "y": 85.94, "w": 13.87, "h": 11.72, "label": "Temples majestueux", "page": 14},
-  {"x": 30.66, "y": 85.94, "w": 13.87, "h": 11.72, "label": "Cuisine délicieuse", "page": 13},
+  {"x": 16.8, "y": 85.94, "w": 13.87, "h": 11.72, "label": "Temples majestueux", "page": 17},
+  {"x": 30.66, "y": 85.94, "w": 13.87, "h": 11.72, "label": "Cuisine délicieuse", "panel": "links"},
   {"x": 44.53, "y": 85.94, "w": 13.87, "h": 11.72, "label": "Îles paradisiaques", "page": 19},
-  {"x": 58.4, "y": 85.94, "w": 13.87, "h": 11.72, "label": "Shopping et marchés", "page": 18},
+  {"x": 58.4, "y": 85.94, "w": 13.87, "h": 11.72, "label": "Shopping et marchés", "panel": "links"},
   {"x": 72.27, "y": 85.94, "w": 13.87, "h": 11.72, "label": "Rencontres et sourires", "page": 17},
   {"x": 86.13, "y": 85.94, "w": 10.94, "h": 11.72, "label": "Astuces et bons plans", "page": 16}
  ],
@@ -93,6 +93,141 @@ const HOTSPOTS={
   {"x": 2.93, "y": 64.78, "w": 30.76, "h": 18.88, "label": "Assurance voyage", "href": "https://safetywing.com/nomad-insurance?referenceID=26576610&campaign=thai-malin&utm_campaign=thai-malin&utm_source=26576610&utm_medium=Ambassador"},
   {"x": 34.18, "y": 64.78, "w": 30.76, "h": 18.88, "label": "Preuves de séjour", "panel": "checklist"},
   {"x": 65.43, "y": 64.78, "w": 31.74, "h": 18.88, "label": "Autres informations", "panel": "links"}
+ ],
+ 4:[
+  {"x": 2.93, "y": 40.23, "w": 30.76, "h": 20.18, "label": "Passeport", "panel": "checklist"},
+  {"x": 34.18, "y": 40.23, "w": 30.76, "h": 20.18, "label": "TDAC", "href": "https://tdac.immigration.go.th"},
+  {"x": 65.43, "y": 40.23, "w": 31.74, "h": 20.18, "label": "Visa", "href": "https://www.diplomatie.gouv.fr/fr/information-par-pays/thailande/conseils-aux-voyageurs-entree-sejour"},
+  {"x": 2.93, "y": 61.72, "w": 30.76, "h": 19.99, "label": "Assurance voyage", "href": "https://safetywing.com/nomad-insurance?referenceID=26576610&campaign=thai-malin&utm_campaign=thai-malin&utm_source=26576610&utm_medium=Ambassador"},
+  {"x": 34.18, "y": 61.72, "w": 30.76, "h": 19.99, "label": "Preuves de séjour", "panel": "checklist"},
+  {"x": 65.43, "y": 61.72, "w": 31.74, "h": 19.99, "label": "Autres informations", "panel": "links"}
+ ],
+ 5:[
+  {"x": 1.46, "y": 25.91, "w": 47.36, "h": 20.7, "label": "Contrôle d’immigration", "page": 4},
+  {"x": 50.78, "y": 25.91, "w": 47.36, "h": 20.7, "label": "Récupération des bagages", "panel": "checklist"},
+  {"x": 1.46, "y": 47.4, "w": 47.36, "h": 20.31, "label": "Douane", "href": "https://www.diplomatie.gouv.fr/fr/information-par-pays/thailande/conseils-aux-voyageurs-entree-sejour"},
+  {"x": 50.78, "y": 47.4, "w": 47.36, "h": 20.31, "label": "Moyens de transport", "panel": "links"},
+  {"x": 1.46, "y": 68.36, "w": 47.36, "h": 20.18, "label": "Argent et paiements", "page": 8},
+  {"x": 50.78, "y": 68.36, "w": 47.36, "h": 20.18, "label": "Carte SIM / Internet", "panel": "links"}
+ ],
+ 6:[
+  {"x": 1.46, "y": 19.86, "w": 47.36, "h": 21.48, "label": "Bangkok et ses environs", "page": 15},
+  {"x": 51.27, "y": 19.86, "w": 47.36, "h": 21.48, "label": "Le Nord", "page": 15},
+  {"x": 1.46, "y": 42.19, "w": 47.36, "h": 14.58, "label": "Le Centre", "page": 15},
+  {"x": 51.27, "y": 42.19, "w": 47.36, "h": 14.58, "label": "Le Sud", "page": 15},
+  {"x": 1.46, "y": 66.08, "w": 47.36, "h": 21.48, "label": "Les Îles", "page": 15},
+  {"x": 51.27, "y": 66.08, "w": 47.36, "h": 21.48, "label": "L’Est", "page": 15}
+ ],
+ 7:[
+  {"x": 1.46, "y": 20.51, "w": 31.25, "h": 28.97, "label": "7 jours", "page": 6},
+  {"x": 33.69, "y": 20.51, "w": 31.25, "h": 28.97, "label": "10 jours", "page": 6},
+  {"x": 66.41, "y": 20.51, "w": 31.25, "h": 28.97, "label": "15 jours", "page": 6},
+  {"x": 1.46, "y": 51.76, "w": 31.25, "h": 29.62, "label": "21 jours", "page": 6},
+  {"x": 33.69, "y": 51.76, "w": 31.25, "h": 29.62, "label": "30 jours", "page": 6},
+  {"x": 66.41, "y": 51.76, "w": 31.25, "h": 29.62, "label": "Thématiques", "page": 19}
+ ],
+ 8:[
+  {"x": 0.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Meilleure période", "panel": "links"},
+  {"x": 50.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Budget", "panel": "links"},
+  {"x": 0.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Transports", "panel": "links"},
+  {"x": 50.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Hébergement", "panel": "links"},
+  {"x": 0.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Santé et sécurité", "href": "https://safetywing.com/nomad-insurance?referenceID=26576610&campaign=thai-malin&utm_campaign=thai-malin&utm_source=26576610&utm_medium=Ambassador"},
+  {"x": 50.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Étiquette et culture", "page": 17}
+ ],
+ 9:[
+  {"x": 0.78, "y": 19.92, "w": 48.44, "h": 21.5, "label": "Les temples et la culture", "page": 17},
+  {"x": 50.78, "y": 19.92, "w": 48.44, "h": 21.5, "label": "Les plages et les îles", "page": 6},
+  {"x": 0.78, "y": 45.05, "w": 48.44, "h": 18.9, "label": "La gastronomie thaïlandaise", "panel": "links"},
+  {"x": 50.78, "y": 45.05, "w": 48.44, "h": 18.9, "label": "La nature et l’aventure", "page": 19},
+  {"x": 0.78, "y": 67.71, "w": 48.44, "h": 17.7, "label": "Les marchés et le shopping", "panel": "links"},
+  {"x": 50.78, "y": 67.71, "w": 48.44, "h": 17.7, "label": "Le bien-être et la détente", "panel": "links"}
+ ],
+ 10:[
+  {"x": 0.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Applications utiles", "panel": "links"},
+  {"x": 50.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Argent et paiements", "page": 8},
+  {"x": 0.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Climat et meilleure saison", "page": 8},
+  {"x": 50.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Respect et culture", "page": 17},
+  {"x": 0.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Santé et sécurité", "page": 8},
+  {"x": 50.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Au quotidien", "panel": "links"}
+ ],
+ 11:[
+  {"x": 0.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Internet et téléphone", "page": 10},
+  {"x": 50.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Change et paiements", "page": 10},
+  {"x": 0.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Se déplacer malin", "page": 8},
+  {"x": 50.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Applications indispensables", "page": 10},
+  {"x": 0.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Respecter les coutumes", "page": 8},
+  {"x": 50.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Petits plus qui font la différence", "page": 10}
+ ],
+ 12:[
+  {"x": 0.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Les indispensables", "panel": "checklist"},
+  {"x": 50.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Le budget", "page": 8},
+  {"x": 0.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Se déplacer facilement", "panel": "links"},
+  {"x": 50.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Où dormir ?", "page": 8},
+  {"x": 0.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Santé et sécurité", "page": 8},
+  {"x": 50.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Profiter pleinement !", "panel": "links"}
+ ],
+ 13:[
+  {"x": 0.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Les arnaques courantes", "panel": "links"},
+  {"x": 50.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "La nourriture et l’eau", "panel": "links"},
+  {"x": 0.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Le climat et la saison", "page": 8},
+  {"x": 50.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Les règles et la culture", "page": 17},
+  {"x": 0.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "La santé et la sécurité", "page": 8},
+  {"x": 50.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Les déplacements", "panel": "links"}
+ ],
+ 14:[
+  {"x": 0.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Les expériences à vivre", "panel": "links"},
+  {"x": 50.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Les activités selon vos envies", "page": 9},
+  {"x": 0.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Les souvenirs à rapporter", "panel": "links"},
+  {"x": 50.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Les bonnes adresses", "panel": "links"},
+  {"x": 0.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Les itinéraires sur mesure", "page": 7},
+  {"x": 50.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Le mot de la fin", "panel": "links"}
+ ],
+ 20:[
+  {"x": 0.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Faites votre check-list", "panel": "checklist"},
+  {"x": 50.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Adoptez le bon état d’esprit", "panel": "links"},
+  {"x": 0.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Voyagez responsable", "panel": "links"},
+  {"x": 50.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Immortalisez vos souvenirs", "panel": "links"},
+  {"x": 0.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Rejoignez la communauté", "href": "https://thaimalin.fr"},
+  {"x": 50.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Et maintenant… à vous !", "page": 1}
+ ],
+ 15:[
+  {"x": 0.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Bangkok et environs — 7 jours", "panel": "links"},
+  {"x": 50.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Nord de la Thaïlande — 10 jours", "panel": "links"},
+  {"x": 0.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Sud — Plages et îles — 15 jours", "panel": "links"},
+  {"x": 50.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Thaïlande complète — 21 jours", "panel": "links"},
+  {"x": 0.78, "y": 67.64, "w": 98.44, "h": 21.6, "label": "Thaïlande hors des sentiers battus — 30 jours", "panel": "links"}
+ ],
+ 17:[
+  {"x": 0.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "La religion bouddhiste", "panel": "links"},
+  {"x": 50.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Les temples (wat)", "panel": "links"},
+  {"x": 0.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Fêtes et festivals", "panel": "links"},
+  {"x": 50.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Étiquette et bonnes manières", "panel": "links"},
+  {"x": 0.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Art, artisanat et traditions", "panel": "links"},
+  {"x": 50.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Un peuple accueillant", "panel": "links"}
+ ],
+ 18:[
+  {"x": 0.78, "y": 19.79, "w": 48.44, "h": 23.7, "label": "Exemption de visa touristique", "page": 4},
+  {"x": 50.78, "y": 19.79, "w": 48.44, "h": 23.7, "label": "Passeport et documents", "page": 3},
+  {"x": 0.78, "y": 45.18, "w": 48.44, "h": 21.9, "label": "TDAC obligatoire", "page": 3},
+  {"x": 50.78, "y": 45.18, "w": 48.44, "h": 21.9, "label": "Billet de sortie / retour", "panel": "checklist"},
+  {"x": 0.78, "y": 68.62, "w": 48.44, "h": 19.75, "label": "Assurance voyage", "page": 4},
+  {"x": 50.78, "y": 68.62, "w": 48.44, "h": 19.75, "label": "Séjour de plus de 30 jours", "panel": "links"}
+ ],
+ 16:[
+  {"x": 0.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Formalités et documents", "page": 18},
+  {"x": 50.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Argent et paiements", "page": 10},
+  {"x": 0.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Se déplacer facilement", "panel": "links"},
+  {"x": 50.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Se loger malin", "page": 8},
+  {"x": 0.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Communication et internet", "page": 10},
+  {"x": 50.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Santé, sécurité et bien-être", "panel": "links"}
+ ],
+ 19:[
+  {"x": 0.78, "y": 19.73, "w": 48.44, "h": 21.18, "label": "Îles et plages paradisiaques", "panel": "links"},
+  {"x": 50.78, "y": 19.73, "w": 48.44, "h": 21.18, "label": "Nature et aventure", "panel": "links"},
+  {"x": 0.78, "y": 42.71, "w": 48.44, "h": 21.9, "label": "Culture et découverte locale", "page": 17},
+  {"x": 50.78, "y": 42.71, "w": 48.44, "h": 21.9, "label": "Activités insolites", "panel": "links"},
+  {"x": 0.78, "y": 66.21, "w": 48.44, "h": 22.3, "label": "Plongée et fonds marins", "panel": "links"},
+  {"x": 50.78, "y": 66.21, "w": 48.44, "h": 22.3, "label": "Excursions depuis les grandes villes", "panel": "links"}
  ]
 };
 function drawHotspots(){

@@ -1,21 +1,159 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Thaï Malin — Mini-guide Réunionnais</title><style>
-:root{{--nav:#062a5b;--blue:#0b64d8;--pink:#f01876;--green:#1aa36f;--orange:#ef6b24;--ink:#071a44;--paper:#fffdf7;--yellow:#fff0a8}}*{{box-sizing:border-box}}html,body{{margin:0;height:100%;font-family:Arial,Helvetica,sans-serif;background:#061f45;color:var(--ink)}}button{{font:inherit}}.app{{height:100vh;display:flex;flex-direction:column;overflow:hidden}}.top{{height:74px;background:var(--nav);color:#fff;display:flex;align-items:center;gap:18px;padding:8px 18px;flex:0 0 auto;box-shadow:0 3px 15px #0005;z-index:5}}.brand{{font-weight:900;font-size:22px;line-height:.9;white-space:nowrap}}.brand span{{color:#ff3d86}}.brand small{{display:block;font-size:11px;color:#fff;margin-top:5px;font-weight:700}}.navbtn{{border:0;background:#173f70;color:#fff;border-radius:15px;min-width:50px;height:50px;font-size:28px;cursor:pointer}}.counter{{font-size:23px;font-weight:900;min-width:90px;text-align:center}}.top .grow{{flex:1}}.labelbtn{{display:flex;align-items:center;gap:8px;border:0;background:transparent;color:#fff;font-weight:700;cursor:pointer;font-size:15px}}.reader{{flex:1;min-height:0;display:flex;overflow:hidden;background:linear-gradient(135deg,#0c2d59,#0b5a87)}}.sidebar{{width:150px;background:#f7f9fb;padding:10px 8px;overflow:auto;flex:0 0 auto}}.thumb{{background:#fff;border-radius:12px;margin-bottom:9px;padding:5px;border:3px solid transparent;cursor:pointer;box-shadow:0 2px 8px #0002}}.thumb.active{{border-color:#f01876}}.thumb img{{width:100%;aspect-ratio:1.5;object-fit:cover;border-radius:8px;display:block}}.thumb div{{font-size:11px;font-weight:800;margin:4px 3px 2px}}.stage{{flex:1;min-width:0;overflow:auto;display:flex;align-items:center;justify-content:center;padding:18px}}.book{{width:min(1180px,calc(100vw - 205px));aspect-ratio:3/2;position:relative;transform-origin:center;perspective:1400px}}.page{{position:absolute;inset:0;border-radius:20px;overflow:hidden;background:var(--paper);box-shadow:0 18px 55px #0007;display:none}}.page.active{{display:block;animation:turn .34s ease}}@keyframes turn{{from{{opacity:.2;transform:rotateY(8deg) scale(.985)}}to{{opacity:1;transform:none}}}}.page1{{background-image:url('assets/page-01.webp');background-size:cover;background-position:center}}.content{{height:100%;display:grid;grid-template-columns:1.12fr .88fr;gap:22px;padding:46px}}.left{{display:flex;flex-direction:column;justify-content:center}}.kicker{{display:inline-flex;align-items:center;gap:10px;font-size:18px;font-weight:900;color:#fff;background:var(--blue);padding:9px 15px;border-radius:999px;width:max-content;box-shadow:0 5px 12px #0002}}h1{{font-size:clamp(35px,4.1vw,68px);line-height:.96;margin:16px 0 8px;font-weight:1000;letter-spacing:-1.8px;color:var(--ink)}}.subtitle{{font-size:22px;font-weight:800;color:#164e91;margin-bottom:18px}}.bullets{{display:grid;gap:10px;background:#ffffffed;border-radius:22px;padding:20px 22px;box-shadow:0 8px 25px #163b5722}}.bullet{{display:flex;gap:12px;align-items:flex-start;font-size:19px;font-weight:700;line-height:1.18}}.check{{flex:0 0 28px;width:28px;height:28px;border-radius:8px;background:#1a9d6d;color:#fff;display:grid;place-items:center;font-size:18px;margin-top:0}}.tip{{margin-top:16px;background:var(--yellow);border-radius:20px;padding:14px 18px;box-shadow:0 6px 18px #0002;position:relative}}.tip b{{display:block;color:#073e86;font-size:18px;margin-bottom:4px}}.tip p{{margin:0;font-size:17px;font-weight:700;line-height:1.2}}.hero{{border-radius:28px;overflow:hidden;position:relative;min-height:0;box-shadow:0 14px 30px #0004;border:7px solid #fff;background:#ddd}}.hero img{{width:100%;height:100%;object-fit:cover;display:block}}.hero::after{{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#071b4400 50%,#071b4466)}}.pagebadge{{position:absolute;top:22px;left:22px;width:70px;height:70px;border-radius:50%;background:var(--pink);color:#fff;display:grid;place-items:center;font-size:38px;font-weight:1000;box-shadow:0 5px 15px #0004;z-index:2}}.footer{{position:absolute;bottom:0;left:0;right:0;background:#062a5bf2;color:#fff;padding:9px 18px;display:flex;justify-content:space-between;font-size:13px;font-weight:700}}.tip::before{{content:'🇷🇪'}}.tip b{{display:inline;margin-left:7px}}.coverNote{{position:absolute;right:35px;top:35px;background:#fff0a8;padding:18px 20px;border-radius:8px;transform:rotate(2deg);max-width:260px;font-size:20px;font-weight:900;box-shadow:0 8px 20px #0003}}.coverTitle{{position:absolute;left:32%;top:9%;font-size:54px;font-weight:1000;color:#081d48;text-shadow:0 2px #fff;line-height:.95}}.coverTitle span{{display:block;font-size:25px;margin-top:10px;color:#123f81}}.bottom{{height:48px;background:#062a5b;color:#fff;display:flex;align-items:center;justify-content:center;gap:16px;font-size:13px;flex:0 0 auto}}.modal{{position:fixed;inset:0;background:#001a3dcc;display:none;align-items:center;justify-content:center;z-index:20;padding:20px}}.modal.show{{display:flex}}.panel{{max-width:850px;width:100%;max-height:85vh;overflow:auto;background:#fff;border-radius:22px;padding:26px;box-shadow:0 20px 60px #0008}}.panel h2{{margin-top:0}}.gridlinks{{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}}.link{{padding:13px;border-radius:13px;background:#f3f6fa;font-weight:800;color:#083f7d}}.close{{float:right;border:0;background:#eee;border-radius:50%;width:38px;height:38px;font-size:20px}}@media(max-width:900px){{.top{{height:62px;padding:6px 10px;gap:8px}}.brand{{font-size:16px}}.brand small,.labelbtn{{display:none}}.navbtn{{min-width:42px;height:42px;font-size:23px;border-radius:12px}}.counter{{font-size:17px;min-width:62px}}.sidebar{{display:none}}.stage{{padding:8px;align-items:flex-start;overflow:auto}}.book{{width:100%;aspect-ratio:3/2;margin-top:10px}}.content{{grid-template-columns:1fr;gap:10px;padding:20px;overflow:auto}.hero{{height:31%;min-height:150px;order:-1;border-width:5px}}h1{{font-size:34px}}.subtitle{{font-size:17px;margin-bottom:8px}}.bullets{{padding:13px;gap:7px;border-radius:15px}}.bullet{{font-size:14px}}.check{{width:23px;height:23px;font-size:14px;flex-basis:23px}}.tip{{padding:10px 12px;margin-top:8px}}.tip p{{font-size:13px}}.footer{{font-size:10px;padding:7px 10px}}.pagebadge{{width:52px;height:52px;font-size:28px;top:12px;left:12px}}.coverTitle{{left:8%;top:12%;font-size:34px}}.coverTitle span{{font-size:17px}}.coverNote{{right:12px;top:30px;max-width:170px;font-size:13px;padding:11px}}.bottom{{height:36px;font-size:10px}}}}
-@media print{{.top,.sidebar,.bottom,.modal{{display:none!important}}.reader{{display:block;background:#fff;overflow:visible}.stage{{display:block;padding:0;overflow:visible}.book{{width:100%;aspect-ratio:auto}.page{{position:relative;display:block!important;page-break-after:always;height:100vh;border-radius:0;box-shadow:none}.content{{height:100vh}}}}
-</style></head><body><div class="app"><div class="top"><div class="brand">🌺 THAÏ <span>MALIN</span><small>Mini-guide Réunionnais</small></div><button class="navbtn" id="prev">←</button><div class="counter" id="counter">1 / 20</div><button class="navbtn" id="next">→</button><div class="grow"></div><button class="labelbtn" id="sum">☷ &nbsp;Sommaire</button><button class="labelbtn" id="pdf">↓ &nbsp;PDF</button><button class="labelbtn" id="fav">♡ &nbsp;Favoris</button><button class="navbtn" id="full">⛶</button></div><div class="reader"><aside class="sidebar" id="sidebar"></aside><main class="stage"><div class="book" id="book"></div></main></div><div class="bottom">👆 Glisse à gauche ou à droite pour changer de page · 🔍 Zoom pour lire · 🇷🇪 Réunion Malin</div></div><div class="modal" id="modal"><div class="panel"><button class="close" id="close">×</button><h2>📋 Sommaire</h2><div class="gridlinks" id="links"></div></div></div><script>
-const pages=[{"n": 1, "title": "Bienvenue en Thaïlande", "icon": "🌺", "subtitle": "Le mini-guide Réunionnais", "bullets": ["Plages, temples, gastronomie et bons plans", "Les essentiels avant le départ", "Des conseils pensés pour les voyageurs de La Réunion"], "tip_title": "Réunion Malin 🇷🇪", "tip": "La Thaïlande comme un Réunionnais : simple, pratique et avec le sourire !"}, {"n": 2, "title": "Avant de partir", "icon": "✈️", "subtitle": "Les essentiels à vérifier depuis La Réunion", "bullets": ["Choisir la bonne période", "Comparer les prix des vols", "Vérifier les documents et formalités", "Préparer la valise", "Prévoir le budget", "Créer une checklist personnelle"], "tip_title": "Réunion Malin 🇷🇪", "tip": "Un bon départ, c’est déjà la moitié du voyage ! 😎"}, {"n": 3, "title": "Documents & TDAC", "icon": "🛂", "subtitle": "Les documents à préparer", "bullets": ["Passeport en cours de validité et documents de voyage", "TDAC : formulaire d’arrivée numérique à remplir avant l’entrée", "Conserver une copie numérique du passeport et des réservations", "Garder les confirmations de vol et d’hébergement accessibles", "Vérifier les règles officielles avant chaque départ"], "tip_title": "Réunion Malin 🇷🇪", "tip": "Je mets tout dans mon téléphone… et dans le cloud, comme ça je suis tranquille ! 😎"}, {"n": 4, "title": "Visa & Entrée en Thaïlande", "icon": "🛃", "subtitle": "Comprendre les conditions d’entrée", "bullets": ["Pour un passeport français, vérifier le régime d’exemption de visa en vigueur à la date du voyage", "Le régime et la durée autorisée peuvent évoluer : consulter l’Ambassade royale de Thaïlande", "Si un visa est nécessaire, préparer le dossier suffisamment tôt", "À l’arrivée, respecter la durée de séjour accordée par l’immigration", "Ne pas confondre TDAC et visa : le TDAC est une formalité d’arrivée"], "tip_title": "Réunion Malin 🇷🇪", "tip": "Pas besoin de visa ne veut pas dire pas de formalités 😉"}, {"n": 5, "title": "Vols & Réservations", "icon": "🎫", "subtitle": "Réserver malin depuis La Réunion", "bullets": ["Comparer plusieurs moteurs et compagnies", "Vérifier bagages inclus, horaires et escales", "Regarder les conditions de modification et d’annulation", "Comparer aussi les vols intérieurs en Thaïlande", "Garder toutes les confirmations dans un même dossier"], "tip_title": "Réunion Malin 🇷🇪", "tip": "Je check plusieurs sites avant de réserver. Les bons plans existent, il faut juste un peu de patience !"}, {"n": 6, "title": "Assurance voyage", "icon": "🛡️", "subtitle": "Une petite dépense qui peut éviter une grosse galère", "bullets": ["Vérifier les frais médicaux et hospitalisation couverts", "Contrôler assistance, rapatriement et responsabilité civile", "Lire les exclusions avant de partir", "Vérifier la couverture des activités prévues", "Conserver le numéro d’assistance et les documents du contrat"], "tip_title": "Réunion Malin 🇷🇪", "tip": "Une petite dépense maintenant peut t’éviter de gros soucis plus tard. Mieux vaut prévenir !"}, {"n": 7, "title": "eSIM & Internet", "icon": "📶", "subtitle": "Rester connecté partout en Thaïlande", "bullets": ["Pourquoi prendre une eSIM ?", "Comparer les forfaits data et la durée", "Installer l’eSIM avant le départ si possible", "Vérifier la couverture dans les zones prévues", "Autres options : SIM locale ou Wi-Fi"], "tip_title": "Réunion Malin 🇷🇪", "tip": "Internet sert pour les cartes, traductions, réservations… et envoyer les photos à la famille !"}, {"n": 8, "title": "Mon argent en Thaïlande", "icon": "💰", "subtitle": "Cartes, retraits et budget", "bullets": ["Choisir une carte bancaire adaptée aux voyages", "Vérifier les frais de paiement et de retrait", "Prévoir un peu de cash en bahts", "Estimer son budget quotidien selon son style de voyage", "Utiliser les paiements sans contact quand ils sont acceptés"], "tip_title": "Réunion Malin 🇷🇪", "tip": "Toujours avoir un peu de cash : ça peut sauver la mise quand le terminal ne suit pas !"}, {"n": 9, "title": "Ma valise", "icon": "🧳", "subtitle": "La checklist essentielle", "bullets": ["Vêtements légers et respirants", "Sandales + chaussures adaptées aux visites", "Maillot, protection solaire et petite trousse santé", "Adaptateur, chargeurs et batterie externe", "Copies numériques des documents importants"], "tip_title": "Réunion Malin 🇷🇪", "tip": "Léger dans la valise, lourd en souvenirs ! 😄"}, {"n": 10, "title": "Arrivée en Thaïlande", "icon": "🛬", "subtitle": "Les premières étapes après l’atterrissage", "bullets": ["Passer l’immigration et récupérer ses bagages", "Retrouver le transfert ou rejoindre son moyen de transport", "Activer la data/eSIM et vérifier les applications utiles", "Retirer ou changer une petite somme si nécessaire", "Rejoindre l’hôtel puis prendre le temps de souffler"], "tip_title": "Réunion Malin 🇷🇪", "tip": "Pas besoin de courir : prends tes repères et profite déjà de l’ambiance !"}, {"n": 11, "title": "Se déplacer en Thaïlande", "icon": "🛺", "subtitle": "Les moyens de transport", "bullets": ["Comparer avion, train, bus, bateau et transferts privés", "Réserver les longs trajets à l’avance quand la demande est forte", "Utiliser Grab et les applications de cartes pour les trajets urbains", "Pour les îles, vérifier horaires et météo des bateaux", "Toujours prévoir un peu de marge entre deux correspondances"], "tip_title": "Réunion Malin 🇷🇪", "tip": "Une fois qu’on a compris les transports, c’est facile… et l’aventure commence ! 😄"}, {"n": 12, "title": "Se loger", "icon": "🏨", "subtitle": "Hôtels, guesthouses, resorts et bons plans", "bullets": ["Comparer les hébergements et les avis récents", "Regarder l’emplacement avant le prix seul", "Vérifier petit-déjeuner, transfert et conditions d’annulation", "Choisir le quartier selon les activités prévues", "Comparer les offres directes et plateformes"], "tip_title": "Réunion Malin 🇷🇪", "tip": "Du petit guesthouse au resort de rêve, il y en a pour tous les budgets !"}, {"n": 13, "title": "Manger en Thaïlande", "icon": "🍜", "subtitle": "Street-food, marchés et restaurants", "bullets": ["Goûter les spécialités locales progressivement", "Choisir les stands avec beaucoup de rotation", "Demander le niveau de piment : mai phet si besoin", "Tester marchés, food courts et restaurants locaux", "Boire de l’eau en bouteille si tu préfères éviter les mauvaises surprises"], "tip_title": "Réunion Malin 🇷🇪", "tip": "Le piment thaï, c’est pas une compétition… sauf si tu veux transpirer avant le dessert ! 🌶️"}, {"n": 14, "title": "Visiter les incontournables", "icon": "🏝️", "subtitle": "Temples, îles, nature et patrimoine", "bullets": ["Temples et lieux culturels emblématiques", "Plages et îles paradisiaques", "Marchés et quartiers animés", "Parcs nationaux et paysages naturels", "Alterner visites, pauses et moments libres"], "tip_title": "Réunion Malin 🇷🇪", "tip": "Ne remplis pas toutes tes journées : la Thaïlande se savoure aussi tranquillement !"}, {"n": 15, "title": "Itinéraires recommandés", "icon": "🗺️", "subtitle": "Des idées selon la durée du séjour", "bullets": ["Circuit 7 jours : Bangkok + Ayutthaya", "Circuit 10 jours : Bangkok + Nord (Chiang Mai)", "Circuit 15 jours : Grand tour du Sud / Andaman", "Circuit 21 jours : combiné Nord + Centre + Sud", "30 jours : immersion plus complète et rythme plus doux"], "tip_title": "Réunion Malin 🇷🇪", "tip": "Choisis selon ton rythme : courir partout ou prendre le temps, les deux sont possibles !"}, {"n": 16, "title": "Conseils pratiques au quotidien", "icon": "💡", "subtitle": "Santé, sécurité, applications et réflexes", "bullets": ["Santé et trousse de secours", "Sécurité et précautions de base", "Applications utiles : Maps, Grab, traduction, météo", "Comportements à adopter dans les lieux publics", "Numéros importants à conserver"], "tip_title": "Réunion Malin 🇷🇪", "tip": "Avec deux-trois bons réflexes, tu peux voyager beaucoup plus tranquille !"}, {"n": 17, "title": "Culture & Traditions", "icon": "🙏", "subtitle": "Comprendre la Thaïlande et ses habitants", "bullets": ["Le bouddhisme au quotidien", "Les traditions et coutumes", "Le respect des locaux et des lieux sacrés", "Les fêtes et festivals", "Les petits gestes qui font la différence"], "tip_title": "Réunion Malin 🇷🇪", "tip": "Un sourire, un wai et un peu de respect : tu seras bien accueilli !"}, {"n": 18, "title": "Shopping & Souvenirs", "icon": "🛍️", "subtitle": "Que ramener de Thaïlande ?", "bullets": ["Marchés incontournables", "Idées de cadeaux et souvenirs", "Centres commerciaux et marchés de nuit", "Astuces pour bien négocier", "Produits à éviter ou à vérifier avant d’acheter"], "tip_title": "Réunion Malin 🇷🇪", "tip": "Pense aux petits cadeaux… mais garde une place dans la valise ! 😄"}, {"n": 19, "title": "Idées d’excursions et activités", "icon": "🌊", "subtitle": "Nature, mer, bien-être et expériences", "bullets": ["Excursions en mer et îles", "Nature et parcs nationaux", "Activités insolites", "Bien-être : spa et massages", "Expériences authentiques et rencontres locales"], "tip_title": "Réunion Malin 🇷🇪", "tip": "Sors des sentiers battus : la Thaïlande réserve de belles surprises !"}, {"n": 20, "title": "Numéros utiles & SOS", "icon": "🆘", "subtitle": "Les contacts à garder sous la main", "bullets": ["Numéros d’urgence en Thaïlande", "Ambassade et consulat", "Contacts utiles : police, secours et assistance", "Que faire en cas de perte ou de vol", "Applications et services utiles pour demander de l’aide"], "tip_title": "Réunion Malin 🇷🇪", "tip": "Garde ces infos dans ton téléphone. On espère ne jamais en avoir besoin !"}];
-let current=1;
-const book=document.getElementById('book'), sidebar=document.getElementById('sidebar'), counter=document.getElementById('counter');
-function pageHTML(p){{ if(p.n===1) return `<section class="page active page1"><div class="coverTitle">THAÏ MALIN<span>Mini-guide Réunionnais</span></div><div class="coverNote">🇷🇪 Réunion Malin<br><span style="font-weight:700">La Thaïlande comme un Réunionnais !</span> 😎</div><div class="footer"><span>Bienvenue en Thaïlande 🇹🇭</span><span>Prépare · Voyage · Profite</span></div></section>`;
-return `<section class="page" data-page="${p.n}"><div class="pagebadge">${p.n}</div><div class="content"><div class="left"><div class="kicker">${p.icon} ${p.n < 10 ? 'L’essentiel' : 'À savoir'}</div><h1>${p.title}</h1><div class="subtitle">${p.subtitle}</div><div class="bullets">${p.bullets.map(x=>`<div class="bullet"><span class="check">✓</span><span>${x}</span></div>`).join('')}</div><div class="tip"><b>${p.tip_title}</b><p>${p.tip}</p></div></div><div class="hero"><img src="assets/hero-${String(p.n).padStart(2,'0')}.webp" alt="Illustration ${p.title}"></div></div><div class="footer"><span>THAÏ MALIN 🌺 · Mini-guide Réunionnais</span><span>${p.n} / 20</span></div></section>`}}
-book.innerHTML=pages.map(pageHTML).join('');
-sidebar.innerHTML=pages.map(p=>`<div class="thumb ${p.n===1?'active':''}" data-n="${p.n}"><img src="${p.n===1?'assets/page-01.webp':`assets/hero-${String(p.n).padStart(2,'0')}.webp`}"><div>${p.n}. ${p.title}</div></div>`).join('');
-const sections=[...document.querySelectorAll('.page')];
-function show(n){{current=Math.max(1,Math.min(20,n));sections.forEach((s,i)=>s.classList.toggle('active',i===current-1));document.querySelectorAll('.thumb').forEach(t=>t.classList.toggle('active',+t.dataset.n===current));counter.textContent=`${current} / 20`;}}
-document.getElementById('prev').onclick=()=>show(current-1);document.getElementById('next').onclick=()=>show(current+1);document.querySelectorAll('.thumb').forEach(t=>t.onclick=()=>show(+t.dataset.n));
-let sx=0;book.addEventListener('touchstart',e=>sx=e.touches[0].clientX);book.addEventListener('touchend',e=>{{let dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)show(current+(dx<0?1:-1));}});
-document.addEventListener('keydown',e=>{{if(e.key==='ArrowRight')show(current+1);if(e.key==='ArrowLeft')show(current-1);}});
-const modal=document.getElementById('modal');document.getElementById('sum').onclick=()=>{{document.getElementById('links').innerHTML=pages.map(p=>`<div class="link" onclick="show(${{p.n}});modal.classList.remove('show')">${{p.n}} · ${{p.title}}</div>`).join('');modal.classList.add('show')}};document.getElementById('close').onclick=()=>modal.classList.remove('show');modal.onclick=e=>{{if(e.target===modal)modal.classList.remove('show')}};
-document.getElementById('pdf').onclick=()=>window.print();document.getElementById('full').onclick=()=>document.documentElement.requestFullscreen?.();
-let fav=false;document.getElementById('fav').onclick=e=>{{fav=!fav;e.target.textContent=fav?'♥  Favori ajouté':'♡  Favoris'}};
-show(1);
+<!doctype html>
+<html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thaï Malin — Mini-guide Réunionnais</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#edf4f3;color:#17323e;font-family:Arial,sans-serif}
+header{position:sticky;top:0;z-index:20;background:#062554;color:#fff}.top{height:58px;display:flex;align-items:center;gap:10px;padding:7px 14px}
+.brand{font-size:20px;font-weight:900}.brand span{color:#ff4778}.title{flex:1;font-weight:800}.counter{font-weight:900}
+button{cursor:pointer;border:0}.nav,.tool{background:#ffffff20;color:#fff;border-radius:10px;padding:9px 12px;font-weight:900}
+.layout{display:grid;grid-template-columns:145px 1fr;max-width:1500px;margin:auto}.side{background:#fff;padding:8px;max-height:calc(100vh - 58px);overflow:auto}
+.thumb{width:100%;background:#fff;border:2px solid transparent;border-radius:9px;padding:3px;margin-bottom:7px;text-align:left;font-weight:800}.thumb.active{border-color:#1676d2}.thumb img{width:100%;display:block;border-radius:6px}.thumb small{font-size:10px}
+main{padding:12px}.viewer{position:relative;max-width:1400px;margin:auto;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 12px 35px #17323e22}.viewer img{width:100%;display:block}
+.hotspot{position:absolute;display:block;border:0;background:transparent;border-radius:10px;cursor:pointer}
+.hotspot:hover{background:#ffffff33;outline:3px solid #fff;box-shadow:0 0 0 3px #ff4778,0 8px 22px #0006}
+.hotspot:focus-visible{outline:3px solid #ff4778}
+.editing .hotspot{pointer-events:none;outline:2px dashed #ff4778;background:#ff477822}
+.drawbox{position:absolute;border:2px dashed #ff4778;background:#ff477833;pointer-events:none}
+#editpanel{position:fixed;right:12px;bottom:12px;width:min(420px,92vw);background:#062554;color:#fff;border-radius:14px;padding:12px;z-index:50;box-shadow:0 10px 30px #0008;font-size:13px}
+#editpanel textarea{width:100%;height:150px;font:12px monospace;border-radius:8px;border:0;padding:6px}
+#editpanel button{margin:6px 6px 0 0;padding:8px 12px;border-radius:8px;font-weight:900}
+
+.bottom{max-width:1400px;margin:10px auto;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}.bottom button{padding:10px 14px;border-radius:10px;font-weight:900}
+.primary{background:#1676d2;color:#fff}.pink{background:#ed4775;color:#fff}.green{background:#1fa66b;color:#fff}.orange{background:#f07b22;color:#fff}.light{background:#fff;color:#17323e}
+.panel{max-width:1400px;margin:10px auto;background:#fff;border:1px solid #d8e5e2;border-radius:16px;padding:14px;display:none}.panel.show{display:block}
+.links{display:flex;flex-wrap:wrap;gap:8px}.btn{padding:10px 13px;border-radius:10px;color:#fff;text-decoration:none;font-weight:900}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}.check{padding:9px;border:1px solid #dce6e4;border-radius:10px;font-weight:800;background:#f7faf9}.check input{width:19px;height:19px;vertical-align:middle;margin-right:7px;accent-color:#1fa66b}
+@media(max-width:800px){.top{height:auto;flex-wrap:wrap;gap:6px}.brand{font-size:17px;white-space:nowrap}.counter{white-space:nowrap}.tool{padding:7px 9px;font-size:13px}.side{max-height:none}.layout{grid-template-columns:1fr}.side{display:flex;overflow-x:auto;max-height:none}.thumb{min-width:100px}.title{display:none}.checks{grid-template-columns:1fr}}
+</style></head><body>
+<header><div class="top">
+<div class="brand">🌺 THAÏ <span>MALIN</span></div><div class="title">Mini-guide Réunionnais</div>
+<button class="nav" onclick="go(page-1)">←</button><div class="counter" id="counter">1 / 20</div><button class="nav" onclick="go(page+1)">→</button>
+<button class="tool" onclick="show('summary')">☷ Sommaire</button><button class="tool" onclick="window.print()">↓ PDF</button>
+<button class="tool" onclick="show('favorites')">♡ Favoris</button><button class="tool" onclick="document.documentElement.requestFullscreen?.()">⛶</button>
+</div></header>
+<div class="layout"><aside class="side" id="side"></aside><main>
+<div class="viewer" id="viewer"><img id="pageImage" alt=""></div>
+<div class="bottom">
+<button class="primary" onclick="show('links')">🔗 Liens utiles</button>
+<button class="pink" onclick="show('checklist')">☑️ Ma checklist</button>
+<button class="green" onclick="show('book')">📖 Mon livre</button>
+<button class="orange" onclick="show('film')">🎬 Mon film IA</button>
+<button class="light" onclick="toggleFavorite()">♡ Ajouter aux favoris</button>
+</div>
+<section class="panel" id="summary"><h2>📋 Sommaire</h2><div class="links" id="summaryLinks"></div></section>
+<section class="panel" id="favorites"><h2>❤️ Mes favoris</h2><div id="favList"></div></section>
+<section class="panel" id="links"><h2>🔗 Liens utiles</h2><div class="links">
+<a class="btn primary" target="_blank" href="https://tdac.immigration.go.th">TDAC officiel</a>
+<a class="btn primary" target="_blank" href="https://www.diplomatie.gouv.fr/fr/information-par-pays/thailande/conseils-aux-voyageurs-entree-sejour">France Diplomatie</a>
+<a class="btn green" target="_blank" href="https://www.trip.com/?Allianceid=9852508&SID=327644129&trip_sub1=&trip_sub3=D19106369">Trip.com</a>
+<a class="btn orange" target="_blank" href="https://gyg.me/qSQwVEug">GetYourGuide</a>
+<a class="btn green" target="_blank" href="https://12go.asia/?z=16569415">12Go</a>
+<a class="btn primary" target="_blank" href="https://safetywing.com/nomad-insurance?referenceID=26576610&campaign=thai-malin&utm_campaign=thai-malin&utm_source=26576610&utm_medium=Ambassador">SafetyWing</a>
+<a class="btn" style="background:#673ab7" target="_blank" href="https://airalo.pxf.io/PzWeQQ">Airalo</a>
+</div></section>
+<section class="panel" id="checklist"><h2>☑️ Ma checklist</h2><div class="checks">
+<label class="check"><input type="checkbox" data-k="passport">Passeport</label><label class="check"><input type="checkbox" data-k="tdac">TDAC</label>
+<label class="check"><input type="checkbox" data-k="tickets">Billets</label><label class="check"><input type="checkbox" data-k="hotel">Hébergement</label>
+<label class="check"><input type="checkbox" data-k="insurance">Assurance</label><label class="check"><input type="checkbox" data-k="esim">eSIM</label>
+<label class="check"><input type="checkbox" data-k="copies">Copies numériques</label><label class="check"><input type="checkbox" data-k="money">Argent</label>
+</div></section>
+<section class="panel" id="book"><h2>📖 Mon livre de voyage</h2><p>Interface prête pour créer le livre illustré personnalisé.</p></section>
+<section class="panel" id="film"><h2>🎬 Mon film de voyage IA</h2><p>Interface prête pour transformer le livre en petit film animé personnalisé.</p></section>
+</main></div>
+<script>
+const titles=["Bienvenue en Thaïlande", "Avant de partir", "Documents & TDAC", "Visa & Entrée en Thaïlande", "Vols & Réservations", "Assurance voyage", "eSIM & Internet", "Mon argent en Thaïlande", "Ma valise", "Arrivée en Thaïlande", "Se déplacer en Thaïlande", "Se loger", "Manger en Thaïlande", "Visiter les incontournables", "Itinéraires recommandés", "Conseils pratiques au quotidien", "Culture & Traditions", "Shopping & Souvenirs", "Idées d’excursions et activités", "Numéros utiles & SOS"];
+let page=1;
+const HOTSPOTS={
+ // x,y,w,h en % de l'image (restent alignés à toutes les tailles). Cible : href (lien externe) | page (n° de page) | panel (id du panneau)
+ 1:[
+  {"x": 2.93, "y": 22.46, "w": 32.23, "h": 4.88, "label": "Plages", "page": 19},
+  {"x": 2.93, "y": 29.3, "w": 32.23, "h": 4.23, "label": "Culture", "page": 17},
+  {"x": 2.93, "y": 34.83, "w": 32.23, "h": 4.23, "label": "Gastronomie", "page": 13},
+  {"x": 2.93, "y": 39.71, "w": 32.23, "h": 4.56, "label": "Bons plans", "page": 16},
+  {"x": 2.93, "y": 85.94, "w": 13.87, "h": 11.72, "label": "Plages de rêve", "page": 19},
+  {"x": 16.8, "y": 85.94, "w": 13.87, "h": 11.72, "label": "Temples majestueux", "page": 14},
+  {"x": 30.66, "y": 85.94, "w": 13.87, "h": 11.72, "label": "Cuisine délicieuse", "page": 13},
+  {"x": 44.53, "y": 85.94, "w": 13.87, "h": 11.72, "label": "Îles paradisiaques", "page": 19},
+  {"x": 58.4, "y": 85.94, "w": 13.87, "h": 11.72, "label": "Shopping et marchés", "page": 18},
+  {"x": 72.27, "y": 85.94, "w": 13.87, "h": 11.72, "label": "Rencontres et sourires", "page": 17},
+  {"x": 86.13, "y": 85.94, "w": 10.94, "h": 11.72, "label": "Astuces et bons plans", "page": 16}
+ ],
+ 2:[
+  {"x": 1.95, "y": 17.9, "w": 27.83, "h": 3.58, "label": "Planifier", "page": 15},
+  {"x": 1.95, "y": 22.01, "w": 27.83, "h": 3.58, "label": "Comparer", "page": 5},
+  {"x": 1.95, "y": 25.91, "w": 27.83, "h": 3.58, "label": "Budgéter", "page": 8},
+  {"x": 1.95, "y": 29.82, "w": 27.83, "h": 3.58, "label": "Réserver", "panel": "links"},
+  {"x": 1.95, "y": 33.72, "w": 27.83, "h": 4.17, "label": "Profiter", "page": 14}
+ ],
+ 3:[
+  {"x": 2.93, "y": 44.92, "w": 30.76, "h": 19.21, "label": "Passeport", "panel": "checklist"},
+  {"x": 34.18, "y": 44.92, "w": 30.76, "h": 19.21, "label": "TDAC", "href": "https://tdac.immigration.go.th"},
+  {"x": 65.43, "y": 44.92, "w": 31.74, "h": 19.21, "label": "Visa", "page": 4},
+  {"x": 2.93, "y": 64.78, "w": 30.76, "h": 18.88, "label": "Assurance voyage", "href": "https://safetywing.com/nomad-insurance?referenceID=26576610&campaign=thai-malin&utm_campaign=thai-malin&utm_source=26576610&utm_medium=Ambassador"},
+  {"x": 34.18, "y": 64.78, "w": 30.76, "h": 18.88, "label": "Preuves de séjour", "panel": "checklist"},
+  {"x": 65.43, "y": 64.78, "w": 31.74, "h": 18.88, "label": "Autres informations", "panel": "links"}
+ ]
+};
+function drawHotspots(){
+ const v=document.getElementById('viewer');v.querySelectorAll('.hotspot').forEach(e=>e.remove());
+ (HOTSPOTS[page]||[]).forEach(h=>{
+  const e=document.createElement(h.href?'a':'button');e.className='hotspot';
+  e.style.cssText='left:'+h.x+'%;top:'+h.y+'%;width:'+h.w+'%;height:'+h.h+'%';
+  e.setAttribute('aria-label',h.label);e.title=h.label;
+  if(h.href){e.href=h.href;e.target='_blank';e.rel='noopener sponsored';}
+  else if(h.page){e.onclick=()=>go(h.page);}
+  else if(h.panel){e.onclick=()=>show(h.panel);}
+  v.appendChild(e);
+ });
+}
+const state=JSON.parse(localStorage.getItem('tm-state')||'{}');
+function go(n){page=Math.max(1,Math.min(20,n));render();window.scrollTo({top:0,behavior:'smooth'});}
+function render(){
+ document.getElementById('counter').textContent=page+' / 20';
+ document.getElementById('pageImage').src='assets/page-'+String(page).padStart(2,'0')+'.webp';
+ document.getElementById('pageImage').alt=titles[page-1];
+ drawHotspots();
+ const side=document.getElementById('side');
+ if(!side.children.length){titles.forEach((t,i)=>{let b=document.createElement('button');b.onclick=()=>go(i+1);
+  const im=document.createElement('img');im.src='assets/thumbs/thumb-'+String(i+1).padStart(2,'0')+'.webp';im.alt='';im.loading='lazy';im.decoding='async';
+  const sm=document.createElement('small');sm.textContent=(i+1)+' — '+t;b.append(im,sm);side.appendChild(b);});}
+ [...side.children].forEach((b,i)=>b.className='thumb '+(i+1===page?'active':''));
+}
+function show(id){document.querySelectorAll('.panel').forEach(x=>x.classList.remove('show'));document.getElementById(id).classList.add('show');document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+function toggleFavorite(){let a=JSON.parse(localStorage.getItem('tm-favs')||'[]');if(a.includes(page))a=a.filter(x=>x!==page);else a.push(page);localStorage.setItem('tm-favs',JSON.stringify(a));buildFav();}
+function buildSummary(){let s=document.getElementById('summaryLinks');titles.forEach((t,i)=>{let b=document.createElement('button');b.className='bottom light';b.textContent=(i+1)+' — '+t;b.onclick=()=>go(i+1);s.appendChild(b);});}
+function buildFav(){let f=document.getElementById('favList');let a=JSON.parse(localStorage.getItem('tm-favs')||'[]');f.innerHTML=a.length?'':'Aucun favori pour le moment.';a.forEach(n=>{let b=document.createElement('button');b.className='bottom light';b.textContent=n+' — '+titles[n-1];b.onclick=()=>go(n);f.appendChild(b);});}
+document.querySelectorAll('input[type=checkbox]').forEach(c=>{c.checked=!!state[c.dataset.k];c.onchange=()=>{state[c.dataset.k]=c.checked;localStorage.setItem('tm-state',JSON.stringify(state));};});
+buildSummary();buildFav();render();initEdit();
+
+function initEdit(){
+ if(!/[?&]edit/.test(location.search))return;
+ document.body.classList.add('editing');
+ const v=document.getElementById('viewer'),img=document.getElementById('pageImage');
+ const panel=document.createElement('div');panel.id='editpanel';
+ const info=document.createElement('div');info.textContent='Mode placement : trace un rectangle sur l’image avec la souris, puis indique où il mène. Copie ensuite le code ci-dessous.';
+ const out=document.createElement('textarea');out.readOnly=true;
+ const bCopy=document.createElement('button');bCopy.textContent='Copier le code';bCopy.className='primary';
+ const bUndo=document.createElement('button');bUndo.textContent='Annuler la dernière zone';bUndo.className='light';
+ panel.append(info,out,bCopy,bUndo);document.body.appendChild(panel);
+ const refresh=()=>{out.value=page+':[\n'+(HOTSPOTS[page]||[]).map(h=>' '+JSON.stringify(h)).join(',\n')+'\n],';};
+ const baseRender=render;render=function(){baseRender();refresh();};refresh();
+ bCopy.onclick=()=>{out.select();navigator.clipboard?.writeText(out.value);bCopy.textContent='Copié ✔';setTimeout(()=>bCopy.textContent='Copier le code',1500);};
+ bUndo.onclick=()=>{(HOTSPOTS[page]||[]).pop();drawHotspots();refresh();};
+ let st=null,box=null;
+ const pos=e=>{const r=img.getBoundingClientRect();return{x:Math.min(100,Math.max(0,(e.clientX-r.left)/r.width*100)),y:Math.min(100,Math.max(0,(e.clientY-r.top)/r.height*100))};};
+ v.addEventListener('mousedown',e=>{e.preventDefault();st=pos(e);box=document.createElement('div');box.className='drawbox';v.appendChild(box);});
+ window.addEventListener('mousemove',e=>{if(!st)return;const p=pos(e);Object.assign(box.style,{left:Math.min(st.x,p.x)+'%',top:Math.min(st.y,p.y)+'%',width:Math.abs(p.x-st.x)+'%',height:Math.abs(p.y-st.y)+'%'});});
+ window.addEventListener('mouseup',e=>{
+  if(!st)return;const p=pos(e);box.remove();
+  const h={x:+Math.min(st.x,p.x).toFixed(2),y:+Math.min(st.y,p.y).toFixed(2),w:+Math.abs(p.x-st.x).toFixed(2),h:+Math.abs(p.y-st.y).toFixed(2)};st=null;
+  if(h.w<1||h.h<1)return;
+  const t=(prompt('Où doit mener cette zone ?\nColle un lien (https://…), ou tape un numéro de page (1 à 20), ou panel:checklist / panel:book / panel:film / panel:links')||'').trim();
+  if(!t)return;
+  h.label=prompt('Nom de la zone (ex. Booking) :','')||'Lien';
+  if(/^\d+$/.test(t))h.page=+t;else if(t.startsWith('panel:'))h.panel=t.slice(6);else h.href=/^https?:/.test(t)?t:'https://'+t;
+  (HOTSPOTS[page]=HOTSPOTS[page]||[]).push(h);drawHotspots();refresh();
+ });
+}
 </script></body></html>

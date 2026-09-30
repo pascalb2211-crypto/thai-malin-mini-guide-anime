@@ -146,3 +146,6 @@ Vérifié : balayage complet des 23 pages en navigateur headless = zéro erreur 
 🆕 PAGE 4 REMPLACÉE : « Parler Thaï au quotidien » (ex « Visa & Entrée en Thaïlande »). Image HD 1024×1536 intégrée, gabarit standard 2×3, kit de phrases essentielles (français / thaï / prononciation). 6 cartes : Politesse de base (→ Liens utiles), Se faire comprendre (→ Liens utiles), Marchander (→ page Shopping & Souvenirs 14), Se déplacer (→ page Se déplacer 10), Au restaurant (→ page Manger en Thaïlande 16), Urgences (→ page Numéros utiles & SOS 21).
 
 Vérifié : balayage complet des 23 pages en navigateur headless = zéro erreur JS/réseau, 6 zones cliquables sur chaque page, alignement pixel-perfect vérifié par capture avec surbrillance rouge sur les pages 3 et 4 ; plus aucune référence orpheline vers les anciennes pages 3/4.
+
+---
+Relance déploiement : 2026-09-30 12:36 UTC

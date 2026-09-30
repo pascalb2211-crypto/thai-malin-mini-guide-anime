@@ -56,7 +56,26 @@ main{padding:12px}.viewer{position:relative;max-width:1400px;margin:auto;backgro
  #printAll img{width:100%;height:100vh;object-fit:contain;display:block;page-break-after:always;break-after:page;page-break-inside:avoid;break-inside:avoid}
  #printAll img:last-child{page-break-after:auto;break-after:auto}
 }
+#pwGate{position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#17323e 0%,#0d1b21 100%);display:flex;align-items:center;justify-content:center;padding:24px}
+#pwGate.hidden{display:none}
+.pwBox{background:#fff;border-radius:18px;padding:32px 28px;max-width:360px;width:100%;text-align:center;box-shadow:0 20px 60px #0008}
+.pwBox .pwEmoji{font-size:38px;margin-bottom:6px}
+.pwBox h2{margin:0 0 8px;color:#17323e;font-size:20px}
+.pwBox p{margin:0 0 20px;color:#5b7370;font-size:14px;line-height:1.5}
+.pwBox input{width:100%;padding:12px 14px;border-radius:10px;border:1px solid #d8e5e2;font-size:16px;text-align:center;margin-bottom:12px;box-sizing:border-box}
+.pwBox button{width:100%;padding:12px;border:none;border-radius:10px;background:#1676d2;color:#fff;font-weight:800;font-size:15px;cursor:pointer}
+.pwBox .pwErr{color:#ff4778;font-size:13px;font-weight:700;margin-top:10px;display:none}
 </style></head><body>
+<div id="pwGate">
+ <div class="pwBox">
+  <div class="pwEmoji">🌺</div>
+  <h2>Thaï Malin — Mini-guide</h2>
+  <p>Ce guide est réservé aux acheteurs. Entrez le mot de passe reçu par email après votre achat.</p>
+  <input type="password" id="pwInput" placeholder="Mot de passe" onkeydown="if(event.key==='Enter')checkPw()">
+  <button onclick="checkPw()">Accéder au guide</button>
+  <div class="pwErr" id="pwErr">Mot de passe incorrect, réessayez.</div>
+ </div>
+</div>
 <header><div class="top">
 <div class="brand">🌺 THAÏ <span>MALIN</span></div><div class="title">Mini-guide Réunionnais</div>
 <button class="nav" onclick="go(page-1)">←</button><div class="counter" id="counter">1 / 23</div><button class="nav" onclick="go(page+1)">→</button>
@@ -100,6 +119,30 @@ main{padding:12px}.viewer{position:relative;max-width:1400px;margin:auto;backgro
 </main></div>
 <div id="printAll"></div>
 <script>
+// 🔑 MOT DE PASSE DU GUIDE — calculé automatiquement chaque mois, aucune action manuelle nécessaire.
+// Format : THAILANDE-MM-AAAA (ex. THAILANDE-10-2026 pour octobre 2026, THAILANDE-11-2026 pour novembre...).
+// À donner par email à chaque acheteur du mois — Pascal peut le calculer lui-même à tout moment sans regarder le code.
+function getExpectedPassword(){
+ const d=new Date();
+ const mm=String(d.getMonth()+1).padStart(2,'0');
+ return "THAILANDE-"+mm+"-"+d.getFullYear();
+}
+function normalizePw(s){ return String(s).toLowerCase().replace(/[\s-]/g,''); }
+function checkPw(){
+ const v=document.getElementById('pwInput').value.trim();
+ if(normalizePw(v)===normalizePw(getExpectedPassword())){
+  localStorage.setItem('tm-mg-unlocked', getExpectedPassword());
+  document.getElementById('pwGate').classList.add('hidden');
+ } else {
+  document.getElementById('pwErr').style.display='block';
+ }
+}
+(function checkUnlock(){
+ const saved = localStorage.getItem('tm-mg-unlocked');
+ if(saved && normalizePw(saved)===normalizePw(getExpectedPassword())){
+  document.getElementById('pwGate').classList.add('hidden');
+ }
+})();
 const titles=["Bienvenue en Thaïlande", "Avant de partir", "Comment aller en Thaïlande ?", "Parler Thaï au quotidien", "À l’arrivée en Thaïlande", "Où aller en Thaïlande ?", "Itinéraires conseillés", "Conseils pratiques pour un séjour réussi", "À ne pas manquer en Thaïlande", "Se déplacer en Thaïlande", "Se loger en Thaïlande", "En résumé — Tout pour un séjour réussi", "Les erreurs à éviter", "Shopping & Souvenirs en Thaïlande", "Itinéraires recommandés", "Manger en Thaïlande", "Culture & Traditions", "Formalités & Entrée en Thaïlande", "Idées d’excursions et activités", "Prêt pour l’aventure ?", "Numéros utiles & SOS en Thaïlande", "Mon Centre de Réservation", "Fin — Merci !"];
 let page=1;
 const HOTSPOTS={

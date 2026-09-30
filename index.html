@@ -93,8 +93,8 @@ main{padding:12px}.viewer{position:relative;max-width:1400px;margin:auto;backgro
 <div class="bottom">
 <button class="primary" onclick="show('links')">🔗 Liens utiles</button>
 <button class="pink" onclick="show('checklist')">☑️ Ma checklist</button>
-<button class="green" onclick="show('book')">📖 Mon livre</button>
-<button class="orange" onclick="show('film')">🎬 Mon film IA</button>
+<button class="green" onclick="show('convert')">💱 Euro ↔ Baht</button>
+<button class="orange" onclick="show('countdown')">⏱️ Compte à rebours</button>
 <button class="light" onclick="toggleFavorite()">♡ Ajouter aux favoris</button>
 </div>
 <section class="panel" id="summary"><h2>📋 Sommaire</h2><input class="sumSearch" id="summarySearch" type="text" placeholder="🔍 Rechercher une page (ex : visa, manger, shopping…)" oninput="filterSummary()"><div id="summaryLinks"></div></section>
@@ -114,8 +114,19 @@ main{padding:12px}.viewer{position:relative;max-width:1400px;margin:auto;backgro
 <label class="check"><input type="checkbox" data-k="insurance">Assurance</label><label class="check"><input type="checkbox" data-k="esim">eSIM</label>
 <label class="check"><input type="checkbox" data-k="copies">Copies numériques</label><label class="check"><input type="checkbox" data-k="money">Argent</label>
 </div></section>
-<section class="panel" id="book"><h2>📖 Mon livre de voyage</h2><p>Interface prête pour créer le livre illustré personnalisé.</p></section>
-<section class="panel" id="film"><h2>🎬 Mon film de voyage IA</h2><p>Interface prête pour transformer le livre en petit film animé personnalisé.</p></section>
+<section class="panel" id="convert"><h2>💱 Convertisseur Euro ↔ Baht</h2>
+<p style="color:#5b7370;font-weight:700;margin:0 0 14px">Taux indicatif (à vérifier avant le départ) : 1 € ≈ <span id="convRateTxt">39</span> ฿</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end">
+ <div style="flex:1;min-width:140px"><label style="font-size:12px;font-weight:800;color:#062554;display:block;margin-bottom:5px">Euros (€)</label><input id="convEur" type="number" inputmode="decimal" placeholder="0" class="sumSearch" style="margin:0" oninput="convFromEur()"></div>
+ <div style="flex:1;min-width:140px"><label style="font-size:12px;font-weight:800;color:#062554;display:block;margin-bottom:5px">Baht (฿)</label><input id="convThb" type="number" inputmode="decimal" placeholder="0" class="sumSearch" style="margin:0" oninput="convFromThb()"></div>
+</div>
+<div style="margin-top:14px"><label style="font-size:12px;font-weight:800;color:#062554;display:block;margin-bottom:5px">Ajuster le taux (optionnel)</label><input id="convRate" type="number" inputmode="decimal" value="39" class="sumSearch" style="margin:0;max-width:160px" oninput="convUpdateRate()"></div>
+</section>
+<section class="panel" id="countdown"><h2>⏱️ Compte à rebours avant le départ</h2>
+<p style="color:#5b7370;font-weight:700;margin:0 0 14px">Entre ta date de départ pour voir le compte à rebours.</p>
+<input id="cdDate" type="date" class="sumSearch" style="margin:0 0 14px;max-width:220px" oninput="cdSave()">
+<div id="cdResult" style="font-size:20px;font-weight:900;color:#062554"></div>
+</section>
 </main></div>
 <div id="printAll"></div>
 <script>
@@ -392,6 +403,26 @@ function render(){
 }
 function show(id){document.querySelectorAll('.panel').forEach(x=>x.classList.remove('show'));document.getElementById(id).classList.add('show');document.getElementById(id).scrollIntoView({behavior:'smooth'});}
 function toggleFavorite(){let a=JSON.parse(localStorage.getItem('tm-favs')||'[]');if(a.includes(page))a=a.filter(x=>x!==page);else a.push(page);localStorage.setItem('tm-favs',JSON.stringify(a));buildFav();updateSummaryFavs();}
+let convRate=parseFloat(localStorage.getItem('tm-conv-rate')||'39');
+function convUpdateRate(){const v=parseFloat(document.getElementById('convRate').value);if(v>0){convRate=v;localStorage.setItem('tm-conv-rate',String(v));document.getElementById('convRateTxt').textContent=v;convFromEur();}}
+function convFromEur(){const e=parseFloat(document.getElementById('convEur').value);document.getElementById('convThb').value=isNaN(e)?'':Math.round(e*convRate*100)/100;}
+function convFromThb(){const t=parseFloat(document.getElementById('convThb').value);document.getElementById('convEur').value=isNaN(t)?'':Math.round(t/convRate*100)/100;}
+(function initConv(){document.getElementById('convRate').value=convRate;document.getElementById('convRateTxt').textContent=convRate;})();
+function cdSave(){const v=document.getElementById('cdDate').value;localStorage.setItem('tm-departure',v);cdRender();}
+function cdRender(){
+ const v=localStorage.getItem('tm-departure');
+ const r=document.getElementById('cdResult');
+ if(!v){r.textContent='';return;}
+ document.getElementById('cdDate').value=v;
+ const today=new Date();today.setHours(0,0,0,0);
+ const dep=new Date(v+'T00:00:00');
+ const days=Math.round((dep-today)/86400000);
+ if(days>1)r.textContent='🌴 Plus que '+days+' jours avant ton voyage en Thaïlande !';
+ else if(days===1)r.textContent='🌴 C\'est demain ! Bon voyage en Thaïlande !';
+ else if(days===0)r.textContent='✈️ C\'est aujourd\'hui, bon voyage !';
+ else r.textContent='Bon retour de Thaïlande ! 🌺';
+}
+cdRender();
 const SUMMARY_GROUPS=[
  {emoji:'🧳',label:'Avant de partir',pages:[1,2,3,4,5,18]},
  {emoji:'🗺️',label:'Destinations & itinéraires',pages:[6,7,9,15,19]},
@@ -461,7 +492,7 @@ function initEdit(){
   if(!st)return;const p=pos(e);box.remove();
   const h={x:+Math.min(st.x,p.x).toFixed(2),y:+Math.min(st.y,p.y).toFixed(2),w:+Math.abs(p.x-st.x).toFixed(2),h:+Math.abs(p.y-st.y).toFixed(2)};st=null;
   if(h.w<1||h.h<1)return;
-  const t=(prompt('Où doit mener cette zone ?\nColle un lien (https://…), ou tape un numéro de page (1 à 23), ou panel:checklist / panel:book / panel:film / panel:links')||'').trim();
+  const t=(prompt('Où doit mener cette zone ?\nColle un lien (https://…), ou tape un numéro de page (1 à 23), ou panel:checklist / panel:convert / panel:countdown / panel:links')||'').trim();
   if(!t)return;
   h.label=prompt('Nom de la zone (ex. Booking) :','')||'Lien';
   if(/^\d+$/.test(t))h.page=+t;else if(t.startsWith('panel:'))h.panel=t.slice(6);else h.href=/^https?:/.test(t)?t:'https://'+t;

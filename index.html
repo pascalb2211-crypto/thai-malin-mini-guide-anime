@@ -100,7 +100,7 @@ main{padding:12px}.viewer{position:relative;max-width:1400px;margin:auto;backgro
 </main></div>
 <div id="printAll"></div>
 <script>
-const titles=["Bienvenue en Thaïlande", "Avant de partir", "Documents & TDAC", "Visa & Entrée en Thaïlande", "À l’arrivée en Thaïlande", "Où aller en Thaïlande ?", "Itinéraires conseillés", "Conseils pratiques pour un séjour réussi", "À ne pas manquer en Thaïlande", "Se déplacer en Thaïlande", "Se loger en Thaïlande", "En résumé — Tout pour un séjour réussi", "Les erreurs à éviter", "Shopping & Souvenirs en Thaïlande", "Itinéraires recommandés", "Manger en Thaïlande", "Culture & Traditions", "Formalités & Entrée en Thaïlande", "Idées d’excursions et activités", "Prêt pour l’aventure ?", "Numéros utiles & SOS en Thaïlande", "Mon Centre de Réservation", "Fin — Merci !"];
+const titles=["Bienvenue en Thaïlande", "Avant de partir", "Comment aller en Thaïlande ?", "Parler Thaï au quotidien", "À l’arrivée en Thaïlande", "Où aller en Thaïlande ?", "Itinéraires conseillés", "Conseils pratiques pour un séjour réussi", "À ne pas manquer en Thaïlande", "Se déplacer en Thaïlande", "Se loger en Thaïlande", "En résumé — Tout pour un séjour réussi", "Les erreurs à éviter", "Shopping & Souvenirs en Thaïlande", "Itinéraires recommandés", "Manger en Thaïlande", "Culture & Traditions", "Formalités & Entrée en Thaïlande", "Idées d’excursions et activités", "Prêt pour l’aventure ?", "Numéros utiles & SOS en Thaïlande", "Mon Centre de Réservation", "Fin — Merci !"];
 let page=1;
 const HOTSPOTS={
  // x,y,w,h en % de l'image (restent alignés à toutes les tailles). Cible : href (lien externe) | page (n° de page) | panel (id du panneau)
@@ -125,23 +125,23 @@ const HOTSPOTS={
   {"x": 1.95, "y": 33.72, "w": 27.83, "h": 4.17, "label": "Profiter", "page": 9}
  ],
  3:[
-  {"x": 2.93, "y": 44.92, "w": 30.76, "h": 19.21, "label": "Passeport", "panel": "checklist"},
-  {"x": 34.18, "y": 44.92, "w": 30.76, "h": 19.21, "label": "TDAC", "href": "https://tdac.immigration.go.th"},
-  {"x": 65.43, "y": 44.92, "w": 31.74, "h": 19.21, "label": "Visa", "page": 4},
-  {"x": 2.93, "y": 64.78, "w": 30.76, "h": 18.88, "label": "Assurance voyage", "href": "https://safetywing.com/nomad-insurance?referenceID=26576610&campaign=thai-malin&utm_campaign=thai-malin&utm_source=26576610&utm_medium=Ambassador"},
-  {"x": 34.18, "y": 64.78, "w": 30.76, "h": 18.88, "label": "Preuves de séjour", "panel": "checklist"},
-  {"x": 65.43, "y": 64.78, "w": 31.74, "h": 18.88, "label": "Autres informations", "panel": "links"}
+  {"x": 0.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Vol direct Air Austral", "href": "https://www.air-austral.com"},
+  {"x": 50.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Routes avec escale", "panel": "links"},
+  {"x": 0.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Durée du trajet", "panel": "links"},
+  {"x": 50.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Quand réserver", "panel": "links"},
+  {"x": 0.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Budget indicatif", "page": 8},
+  {"x": 50.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Astuces malines", "href": "https://www.skyscanner.fr"}
  ],
  4:[
-  {"x": 2.93, "y": 40.23, "w": 30.76, "h": 20.18, "label": "Passeport", "panel": "checklist"},
-  {"x": 34.18, "y": 40.23, "w": 30.76, "h": 20.18, "label": "TDAC", "href": "https://tdac.immigration.go.th"},
-  {"x": 65.43, "y": 40.23, "w": 31.74, "h": 20.18, "label": "Visa", "href": "https://www.diplomatie.gouv.fr/fr/information-par-pays/thailande/conseils-aux-voyageurs-entree-sejour"},
-  {"x": 2.93, "y": 61.72, "w": 30.76, "h": 19.99, "label": "Assurance voyage", "href": "https://safetywing.com/nomad-insurance?referenceID=26576610&campaign=thai-malin&utm_campaign=thai-malin&utm_source=26576610&utm_medium=Ambassador"},
-  {"x": 34.18, "y": 61.72, "w": 30.76, "h": 19.99, "label": "Preuves de séjour", "panel": "checklist"},
-  {"x": 65.43, "y": 61.72, "w": 31.74, "h": 19.99, "label": "Autres informations", "panel": "links"}
+  {"x": 0.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Politesse de base", "panel": "links"},
+  {"x": 50.78, "y": 19.27, "w": 48.44, "h": 22.44, "label": "Se faire comprendre", "panel": "links"},
+  {"x": 0.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Marchander", "page": 14},
+  {"x": 50.78, "y": 43.49, "w": 48.44, "h": 22.37, "label": "Se déplacer", "page": 10},
+  {"x": 0.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Au restaurant", "page": 16},
+  {"x": 50.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Urgences", "page": 21}
  ],
  5:[
-  {"x": 1.46, "y": 25.91, "w": 47.36, "h": 20.7, "label": "Contrôle d’immigration", "page": 4},
+  {"x": 1.46, "y": 25.91, "w": 47.36, "h": 20.7, "label": "Contrôle d’immigration", "page": 18},
   {"x": 50.78, "y": 25.91, "w": 47.36, "h": 20.7, "label": "Récupération des bagages", "panel": "checklist"},
   {"x": 1.46, "y": 47.4, "w": 47.36, "h": 20.31, "label": "Douane", "href": "https://www.diplomatie.gouv.fr/fr/information-par-pays/thailande/conseils-aux-voyageurs-entree-sejour"},
   {"x": 50.78, "y": 47.4, "w": 47.36, "h": 20.31, "label": "Moyens de transport", "page": 10},
@@ -279,11 +279,11 @@ const HOTSPOTS={
   {"x": 50.78, "y": 67.64, "w": 48.44, "h": 21.07, "label": "Un peuple accueillant", "panel": "links"}
  ],
  18:[
-  {"x": 0.78, "y": 19.79, "w": 48.44, "h": 23.7, "label": "Exemption de visa touristique", "page": 4},
-  {"x": 50.78, "y": 19.79, "w": 48.44, "h": 23.7, "label": "Passeport et documents", "page": 3},
-  {"x": 0.78, "y": 45.18, "w": 48.44, "h": 21.9, "label": "TDAC obligatoire", "page": 3},
+  {"x": 0.78, "y": 19.79, "w": 48.44, "h": 23.7, "label": "Exemption de visa touristique", "href": "https://www.diplomatie.gouv.fr/fr/information-par-pays/thailande/conseils-aux-voyageurs-entree-sejour"},
+  {"x": 50.78, "y": 19.79, "w": 48.44, "h": 23.7, "label": "Passeport et documents", "panel": "checklist"},
+  {"x": 0.78, "y": 45.18, "w": 48.44, "h": 21.9, "label": "TDAC obligatoire", "href": "https://tdac.immigration.go.th"},
   {"x": 50.78, "y": 45.18, "w": 48.44, "h": 21.9, "label": "Billet de sortie / retour", "panel": "checklist"},
-  {"x": 0.78, "y": 68.62, "w": 48.44, "h": 19.75, "label": "Assurance voyage", "page": 4},
+  {"x": 0.78, "y": 68.62, "w": 48.44, "h": 19.75, "label": "Assurance voyage", "href": "https://safetywing.com/nomad-insurance?referenceID=26576610&campaign=thai-malin&utm_campaign=thai-malin&utm_source=26576610&utm_medium=Ambassador"},
   {"x": 50.78, "y": 68.62, "w": 48.44, "h": 19.75, "label": "Séjour de plus de 30 jours", "panel": "links"}
  ],
  16:[
